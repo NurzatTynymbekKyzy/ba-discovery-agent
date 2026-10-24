@@ -1,0 +1,493 @@
+{
+ "_generated": "Generated from templates-source/discovery-setup/requirements-register.xlsx by tools/templates/build_templates.py. Do not edit by hand: change the source file instead.",
+ "spec": {
+  "tabs": [
+   {
+    "name": "Requirements",
+    "freeze_rows": 1,
+    "header": {
+     "bold": true,
+     "background": "#D9E2F3"
+    },
+    "columns": [
+     {
+      "name": "Req ID",
+      "width": 75
+     },
+     {
+      "name": "Type",
+      "width": 117,
+      "options": [
+       "Business",
+       "User",
+       "Functional",
+       "Non-functional"
+      ]
+     },
+     {
+      "name": "Requirement",
+      "width": 390
+     },
+     {
+      "name": "Rationale",
+      "width": 250
+     },
+     {
+      "name": "Priority",
+      "width": 82,
+      "options": [
+       "Must",
+       "Should",
+       "Could",
+       "Won't"
+      ]
+     },
+     {
+      "name": "Source",
+      "width": 215
+     },
+     {
+      "name": "Stakeholder",
+      "width": 145
+     },
+     {
+      "name": "Status",
+      "width": 96,
+      "options": [
+       "Draft",
+       "Confirmed",
+       "Changed",
+       "Rejected"
+      ]
+     },
+     {
+      "name": "Conflicts with",
+      "width": 117
+     },
+     {
+      "name": "Version",
+      "width": 68
+     },
+     {
+      "name": "Last changed",
+      "width": 96
+     }
+    ]
+   }
+  ]
+ },
+ "fallback_csv": "Req ID,Type,Requirement,Rationale,Priority,Source,Stakeholder,Status,Conflicts with,Version,Last changed\n",
+ "requests": [
+  {
+   "updateSheetProperties": {
+    "properties": {
+     "sheetId": 0,
+     "title": "Requirements",
+     "gridProperties": {
+      "frozenRowCount": 1
+     }
+    },
+    "fields": "title,gridProperties.frozenRowCount"
+   }
+  },
+  {
+   "updateCells": {
+    "start": {
+     "sheetId": 0,
+     "rowIndex": 0,
+     "columnIndex": 0
+    },
+    "rows": [
+     {
+      "values": [
+       {
+        "userEnteredValue": {
+         "stringValue": "Req ID"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Type"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Requirement"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Rationale"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Priority"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Source"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Stakeholder"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Status"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Conflicts with"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Version"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Last changed"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "fields": "userEnteredValue,userEnteredFormat.textFormat.bold"
+   }
+  },
+  {
+   "repeatCell": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 0,
+     "endRowIndex": 1,
+     "startColumnIndex": 0,
+     "endColumnIndex": 11
+    },
+    "cell": {
+     "userEnteredFormat": {
+      "backgroundColorStyle": {
+       "rgbColor": {
+        "red": 0.851,
+        "green": 0.8863,
+        "blue": 0.9529
+       }
+      }
+     }
+    },
+    "fields": "userEnteredFormat.backgroundColorStyle"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 0,
+     "endIndex": 1
+    },
+    "properties": {
+     "pixelSize": 75
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 1,
+     "endIndex": 2
+    },
+    "properties": {
+     "pixelSize": 117
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "setDataValidation": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 1,
+     "endRowIndex": 1000,
+     "startColumnIndex": 1,
+     "endColumnIndex": 2
+    },
+    "rule": {
+     "condition": {
+      "type": "ONE_OF_LIST",
+      "values": [
+       {
+        "userEnteredValue": "Business"
+       },
+       {
+        "userEnteredValue": "User"
+       },
+       {
+        "userEnteredValue": "Functional"
+       },
+       {
+        "userEnteredValue": "Non-functional"
+       }
+      ]
+     },
+     "strict": true,
+     "showCustomUi": true
+    }
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 2,
+     "endIndex": 3
+    },
+    "properties": {
+     "pixelSize": 390
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 3,
+     "endIndex": 4
+    },
+    "properties": {
+     "pixelSize": 250
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 4,
+     "endIndex": 5
+    },
+    "properties": {
+     "pixelSize": 82
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "setDataValidation": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 1,
+     "endRowIndex": 1000,
+     "startColumnIndex": 4,
+     "endColumnIndex": 5
+    },
+    "rule": {
+     "condition": {
+      "type": "ONE_OF_LIST",
+      "values": [
+       {
+        "userEnteredValue": "Must"
+       },
+       {
+        "userEnteredValue": "Should"
+       },
+       {
+        "userEnteredValue": "Could"
+       },
+       {
+        "userEnteredValue": "Won't"
+       }
+      ]
+     },
+     "strict": true,
+     "showCustomUi": true
+    }
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 5,
+     "endIndex": 6
+    },
+    "properties": {
+     "pixelSize": 215
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 6,
+     "endIndex": 7
+    },
+    "properties": {
+     "pixelSize": 145
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 7,
+     "endIndex": 8
+    },
+    "properties": {
+     "pixelSize": 96
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "setDataValidation": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 1,
+     "endRowIndex": 1000,
+     "startColumnIndex": 7,
+     "endColumnIndex": 8
+    },
+    "rule": {
+     "condition": {
+      "type": "ONE_OF_LIST",
+      "values": [
+       {
+        "userEnteredValue": "Draft"
+       },
+       {
+        "userEnteredValue": "Confirmed"
+       },
+       {
+        "userEnteredValue": "Changed"
+       },
+       {
+        "userEnteredValue": "Rejected"
+       }
+      ]
+     },
+     "strict": true,
+     "showCustomUi": true
+    }
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 8,
+     "endIndex": 9
+    },
+    "properties": {
+     "pixelSize": 117
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 9,
+     "endIndex": 10
+    },
+    "properties": {
+     "pixelSize": 68
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 10,
+     "endIndex": 11
+    },
+    "properties": {
+     "pixelSize": 96
+    },
+    "fields": "pixelSize"
+   }
+  }
+ ]
+}

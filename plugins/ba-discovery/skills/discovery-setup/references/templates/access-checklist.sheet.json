@@ -1,0 +1,281 @@
+{
+ "_generated": "Generated from templates-source/discovery-setup/access-checklist.xlsx by tools/templates/build_templates.py. Do not edit by hand: change the source file instead.",
+ "spec": {
+  "tabs": [
+   {
+    "name": "Access",
+    "freeze_rows": 1,
+    "header": {
+     "bold": true,
+     "background": "#D9E2F3"
+    },
+    "columns": [
+     {
+      "name": "System or resource",
+      "width": 215
+     },
+     {
+      "name": "Access needed",
+      "width": 215
+     },
+     {
+      "name": "Requested from",
+      "width": 159
+     },
+     {
+      "name": "Requested on",
+      "width": 103
+     },
+     {
+      "name": "Status",
+      "width": 103,
+      "options": [
+       "To request",
+       "Requested",
+       "Granted",
+       "Blocked",
+       "Not needed"
+      ]
+     },
+     {
+      "name": "Notes",
+      "width": 250
+     }
+    ]
+   }
+  ]
+ },
+ "fallback_csv": "System or resource,Access needed,Requested from,Requested on,Status,Notes\n",
+ "requests": [
+  {
+   "updateSheetProperties": {
+    "properties": {
+     "sheetId": 0,
+     "title": "Access",
+     "gridProperties": {
+      "frozenRowCount": 1
+     }
+    },
+    "fields": "title,gridProperties.frozenRowCount"
+   }
+  },
+  {
+   "updateCells": {
+    "start": {
+     "sheetId": 0,
+     "rowIndex": 0,
+     "columnIndex": 0
+    },
+    "rows": [
+     {
+      "values": [
+       {
+        "userEnteredValue": {
+         "stringValue": "System or resource"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Access needed"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Requested from"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Requested on"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Status"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Notes"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "fields": "userEnteredValue,userEnteredFormat.textFormat.bold"
+   }
+  },
+  {
+   "repeatCell": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 0,
+     "endRowIndex": 1,
+     "startColumnIndex": 0,
+     "endColumnIndex": 6
+    },
+    "cell": {
+     "userEnteredFormat": {
+      "backgroundColorStyle": {
+       "rgbColor": {
+        "red": 0.851,
+        "green": 0.8863,
+        "blue": 0.9529
+       }
+      }
+     }
+    },
+    "fields": "userEnteredFormat.backgroundColorStyle"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 0,
+     "endIndex": 1
+    },
+    "properties": {
+     "pixelSize": 215
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 1,
+     "endIndex": 2
+    },
+    "properties": {
+     "pixelSize": 215
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 2,
+     "endIndex": 3
+    },
+    "properties": {
+     "pixelSize": 159
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 3,
+     "endIndex": 4
+    },
+    "properties": {
+     "pixelSize": 103
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 4,
+     "endIndex": 5
+    },
+    "properties": {
+     "pixelSize": 103
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "setDataValidation": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 1,
+     "endRowIndex": 1000,
+     "startColumnIndex": 4,
+     "endColumnIndex": 5
+    },
+    "rule": {
+     "condition": {
+      "type": "ONE_OF_LIST",
+      "values": [
+       {
+        "userEnteredValue": "To request"
+       },
+       {
+        "userEnteredValue": "Requested"
+       },
+       {
+        "userEnteredValue": "Granted"
+       },
+       {
+        "userEnteredValue": "Blocked"
+       },
+       {
+        "userEnteredValue": "Not needed"
+       }
+      ]
+     },
+     "strict": true,
+     "showCustomUi": true
+    }
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 5,
+     "endIndex": 6
+    },
+    "properties": {
+     "pixelSize": 250
+    },
+    "fields": "pixelSize"
+   }
+  }
+ ]
+}

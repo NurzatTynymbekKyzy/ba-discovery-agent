@@ -7,6 +7,7 @@ This file guides Claude Code sessions that develop the plugin. It is not loaded 
 - `plugins/ba-discovery/skills/` — one folder per skill; the agent's instructions
 - `plugins/ba-discovery/evals/` — eval cases, one folder per skill
 - `templates/` — copy these to start a skill or an eval case
+- `templates-source/` — Excel/Word templates for the Docs and Sheets skills create; `tools/templates/build_templates.py` turns them into `skills/<skill>/references/templates/` (never edit those by hand)
 - `docs/` — architecture, skill contract, evals, data policy, roadmap
 
 ## Rules

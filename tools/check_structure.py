@@ -9,6 +9,7 @@ Discovery, so CI checks it on every change:
   - every item has a key, a type and a name
   - keys are unique snake_case identifiers
   - types are folder, doc or sheet; only folders have `items`
+  - every doc and sheet names a template that exists, both as source and built
   - names are unique within the same folder
 
 Exit code 0 when the file is valid, 1 otherwise.
@@ -24,6 +25,8 @@ import yaml
 REPO = Path(__file__).resolve().parents[1]
 STRUCTURE = REPO / "plugins/ba-discovery/skills/discovery-setup/references/structure.yaml"
 TYPES = {"folder", "doc", "sheet"}
+TEMPLATE_SOURCE = REPO / "templates-source/discovery-setup"
+TEMPLATE_BUILT = REPO / "plugins/ba-discovery/skills/discovery-setup/references/templates"
 KEY_RE = re.compile(r"^[a-z][a-z0-9_]*$")
 
 
@@ -64,9 +67,22 @@ def check(path: Path) -> list[str]:
                 problems.append(f"{label}: duplicate name in the same folder")
             else:
                 names.add(name)
-            extra = set(item) - {"key", "type", "name", "items"}
+            extra = set(item) - {"key", "type", "name", "items", "template"}
             if extra:
                 problems.append(f"{label}: unknown fields {sorted(extra)}")
+            template = item.get("template")
+            if typ in ("doc", "sheet"):
+                if not template:
+                    problems.append(f"{label}: every doc and sheet needs a template")
+                else:
+                    ext = {"doc": ".docx", "sheet": ".xlsx"}[typ]
+                    built = {"doc": ".doc.html", "sheet": ".sheet.json"}[typ]
+                    if not (TEMPLATE_SOURCE / f"{template}{ext}").exists():
+                        problems.append(f"{label}: template source {template}{ext} not found in templates-source/discovery-setup/")
+                    if not (TEMPLATE_BUILT / f"{template}{built}").exists():
+                        problems.append(f"{label}: built template {template}{built} missing; run tools/templates/build_templates.py")
+            elif template:
+                problems.append(f"{label}: folders don't take a template")
             if "items" in item:
                 if typ != "folder":
                     problems.append(f"{label}: only folders can contain items")

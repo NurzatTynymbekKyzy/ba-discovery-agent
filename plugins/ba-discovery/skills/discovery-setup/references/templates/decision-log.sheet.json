@@ -1,0 +1,329 @@
+{
+ "_generated": "Generated from templates-source/discovery-setup/decision-log.xlsx by tools/templates/build_templates.py. Do not edit by hand: change the source file instead.",
+ "spec": {
+  "tabs": [
+   {
+    "name": "Decisions",
+    "freeze_rows": 1,
+    "header": {
+     "bold": true,
+     "background": "#D9E2F3"
+    },
+    "columns": [
+     {
+      "name": "Decision ID",
+      "width": 89
+     },
+     {
+      "name": "Date",
+      "width": 89
+     },
+     {
+      "name": "Decision",
+      "width": 320
+     },
+     {
+      "name": "Rationale",
+      "width": 285
+     },
+     {
+      "name": "Decided by",
+      "width": 159
+     },
+     {
+      "name": "Impacted areas",
+      "width": 180
+     },
+     {
+      "name": "Source",
+      "width": 215
+     },
+     {
+      "name": "Status",
+      "width": 103,
+      "options": [
+       "Proposed",
+       "Approved",
+       "Superseded"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "fallback_csv": "Decision ID,Date,Decision,Rationale,Decided by,Impacted areas,Source,Status\n",
+ "requests": [
+  {
+   "updateSheetProperties": {
+    "properties": {
+     "sheetId": 0,
+     "title": "Decisions",
+     "gridProperties": {
+      "frozenRowCount": 1
+     }
+    },
+    "fields": "title,gridProperties.frozenRowCount"
+   }
+  },
+  {
+   "updateCells": {
+    "start": {
+     "sheetId": 0,
+     "rowIndex": 0,
+     "columnIndex": 0
+    },
+    "rows": [
+     {
+      "values": [
+       {
+        "userEnteredValue": {
+         "stringValue": "Decision ID"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Date"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Decision"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Rationale"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Decided by"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Impacted areas"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Source"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       },
+       {
+        "userEnteredValue": {
+         "stringValue": "Status"
+        },
+        "userEnteredFormat": {
+         "textFormat": {
+          "bold": true
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "fields": "userEnteredValue,userEnteredFormat.textFormat.bold"
+   }
+  },
+  {
+   "repeatCell": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 0,
+     "endRowIndex": 1,
+     "startColumnIndex": 0,
+     "endColumnIndex": 8
+    },
+    "cell": {
+     "userEnteredFormat": {
+      "backgroundColorStyle": {
+       "rgbColor": {
+        "red": 0.851,
+        "green": 0.8863,
+        "blue": 0.9529
+       }
+      }
+     }
+    },
+    "fields": "userEnteredFormat.backgroundColorStyle"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 0,
+     "endIndex": 1
+    },
+    "properties": {
+     "pixelSize": 89
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 1,
+     "endIndex": 2
+    },
+    "properties": {
+     "pixelSize": 89
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 2,
+     "endIndex": 3
+    },
+    "properties": {
+     "pixelSize": 320
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 3,
+     "endIndex": 4
+    },
+    "properties": {
+     "pixelSize": 285
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 4,
+     "endIndex": 5
+    },
+    "properties": {
+     "pixelSize": 159
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 5,
+     "endIndex": 6
+    },
+    "properties": {
+     "pixelSize": 180
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 6,
+     "endIndex": 7
+    },
+    "properties": {
+     "pixelSize": 215
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "updateDimensionProperties": {
+    "range": {
+     "sheetId": 0,
+     "dimension": "COLUMNS",
+     "startIndex": 7,
+     "endIndex": 8
+    },
+    "properties": {
+     "pixelSize": 103
+    },
+    "fields": "pixelSize"
+   }
+  },
+  {
+   "setDataValidation": {
+    "range": {
+     "sheetId": 0,
+     "startRowIndex": 1,
+     "endRowIndex": 1000,
+     "startColumnIndex": 7,
+     "endColumnIndex": 8
+    },
+    "rule": {
+     "condition": {
+      "type": "ONE_OF_LIST",
+      "values": [
+       {
+        "userEnteredValue": "Proposed"
+       },
+       {
+        "userEnteredValue": "Approved"
+       },
+       {
+        "userEnteredValue": "Superseded"
+       }
+      ]
+     },
+     "strict": true,
+     "showCustomUi": true
+    }
+   }
+  }
+ ]
+}
