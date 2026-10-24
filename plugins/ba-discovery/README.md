@@ -21,7 +21,7 @@ Install steps for the Claude app are added at the first release, once the distri
 
 | Skill | What it does | Status |
 |---|---|---|
-| `discovery-setup` | Creates the Discovery folder structure, templates and README on your Drive | Planned |
+| `discovery-setup` | Creates the Discovery folder structure with empty Docs and Sheets on your Drive | In progress: tested, 2 rare cases left to try by hand |
 | `workshop-summary` | Turns a transcript into a summary log entry and a follow-up email draft | Planned |
 | `requirements-register` | Extracts, deduplicates and versions requirements; flags conflicts | Planned |
 | `doc-analysis` | Analyzes primary client documents; drafts prioritized client questions | Planned |

@@ -7,7 +7,7 @@ We build one skill at a time. The next step starts only when the current skill m
 | Step | Deliverable | Why this order | Status |
 |---|---|---|---|
 | 0 | Repo skeleton, skill contract, eval approach, data policy, CI | Everything else plugs into it | Done |
-| 1 | `discovery-setup`: Drive folder structure, templates, README, `_agent/config` | Mostly deterministic; every other skill depends on the folder layout | Next |
+| 1 | `discovery-setup`: Drive folder structure with empty Docs and Sheets, `_agent/discovery.yaml` | Mostly deterministic; every other skill depends on the folder layout | In review |
 | 2 | `workshop-summary`: transcript → summary log entry + email draft | Highest daily value; quality is easy to judge | Planned |
 | 3 | `requirements-register`: extract, dedupe, version, flag conflicts | The core that everything downstream depends on | Planned |
 | 4 | `doc-analysis`: primary documents → initial register, canvas, prioritized questions | Reuses the register from step 3 | Planned |
