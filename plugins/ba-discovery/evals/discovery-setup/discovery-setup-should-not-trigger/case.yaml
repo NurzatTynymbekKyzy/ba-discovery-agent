@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: discovery-setup-should-not-trigger
+expected_outcome: |
+  A question about the content of a Discovery Plan, not a request to create a
+  workspace. The discovery-setup skill is not invoked.

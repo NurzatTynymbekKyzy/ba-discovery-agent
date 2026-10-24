@@ -1,0 +1,61 @@
+# The Discovery workspace that `discovery-setup` creates on Google Drive.
+# This file is the single source of truth: the skill creates exactly what is
+# listed here, in this order, and nothing else.
+#
+# Types:
+#   folder  - a Drive folder
+#   doc     - an empty Google Doc       (mimeType application/vnd.google-apps.document)
+#   sheet   - an empty Google Sheet     (mimeType application/vnd.google-apps.spreadsheet)
+#
+# `{project}` is replaced with the project name the BA gives.
+# `key` is a stable identifier other skills use to find an item in
+# _agent/discovery.yaml. Never change a key once released; rename `name` instead.
+
+root:
+  name: "{project} — Discovery"
+
+items:
+  - { key: readme,                type: doc,    name: "00 README" }
+
+  - key: management
+    type: folder
+    name: "01 Discovery Management"
+    items:
+      - { key: discovery_plan,      type: sheet, name: "Discovery Plan" }
+      - { key: communication_plan,  type: sheet, name: "Communication Plan" }
+      - { key: access_checklist,    type: sheet, name: "Access Checklist" }
+      - { key: raid_log,            type: sheet, name: "RAID Log" }
+      - { key: decision_log,        type: sheet, name: "Decision Log" }
+
+  - { key: client_inputs,         type: folder, name: "02 Client Inputs" }
+
+  - key: meetings
+    type: folder
+    name: "03 Meetings"
+    items:
+      - { key: transcripts,         type: folder, name: "Transcripts" }
+      - { key: meeting_summaries,   type: doc,    name: "Meeting Summaries" }
+
+  - key: stakeholders
+    type: folder
+    name: "04 Stakeholders"
+    items:
+      - { key: stakeholder_matrix,  type: sheet, name: "Stakeholder Matrix" }
+
+  - key: context
+    type: folder
+    name: "05 Context"
+    items:
+      - { key: context_canvas,      type: sheet, name: "Project Context Canvas" }
+      - { key: as_is_context,       type: doc,   name: "AS-IS Context" }
+      - { key: glossary,            type: sheet, name: "Glossary" }
+
+  - key: requirements
+    type: folder
+    name: "06 Requirements"
+    items:
+      - { key: requirements_register, type: sheet, name: "Requirements Register" }
+      - { key: open_questions_log,    type: sheet, name: "Open Questions Log" }
+      - { key: constraints,           type: doc,   name: "Constraints" }
+
+  - { key: agent,                 type: folder, name: "_agent" }

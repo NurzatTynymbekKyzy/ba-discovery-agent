@@ -19,7 +19,7 @@ Full reference: [Test plugins with evals](https://code.claude.com/docs/en/plugin
 
 In the Claude app, the Google connectors belong to the BA's account, not to this plugin, so an eval run does not have them. That is why every skill follows the "content in, content out" rule from `SKILL-CONTRACT.md`:
 
-- **Evals** test the skill's judgment on fixture files: the transcript or document goes in `fixtures/`, and graders check what the skill produced.
+- **Evals** test the skill's judgment on fixture files: the transcript or document goes in the case's `files/` folder, and graders check what the skill produced.
 - **The real run** (Definition of Done, point 4) tests the connector steps end to end in the Claude app.
 
 ## Layout
@@ -33,7 +33,7 @@ plugins/ba-discovery/evals/
     └── <skill-name>-should-not-trigger/  # a nearby request that belongs to another skill
 ```
 
-Case names must be unique across the whole suite, so each case folder starts with its skill name. Every case is also tagged with its skill name. Each case folder holds `prompt.md`, `graders/`, and, when needed, `case.yaml` and `fixtures/`. Copy them from `templates/eval-case/`.
+Case names must be unique across the whole suite, so each case folder starts with its skill name. Every case is also tagged with its skill name. Each case folder holds `prompt.md`, `graders/`, and, when needed, `case.yaml`, `files/` and `place-files.sh`. Copy them from `templates/eval-case/`.
 
 ## Writing good graders
 
@@ -75,6 +75,9 @@ Requires Claude Code 2.1.269 or later. Every run is a real model call billed to 
 
 When a BA corrects an agent output in a real Discovery, that correction is the best eval case we can get. Anonymize the input (see `DATA-POLICY.md`), write the corrected output into the `llm` grader's PASS conditions, and add the case in the same PR as the fix.
 
-## To verify when building the first suite
+## Lessons from the first suite (`discovery-setup`)
 
-- How a fixture listed in `context.add_dirs` is addressed in the prompt (relative name or full path). Settle it on the first real case and update the template.
+- **Input files.** Put them in the case's `files/` folder, add `place-files.sh` (copies `files/` into the run's workspace), name it in `case.yaml` under `context.scaffold_script`, and end the prompt with `Input files: <names>`. Run with `--scaffold`. The case template follows this pattern.
+- **Name graders `01-…`, `02-…`** so they keep their order in reports.
+- **Judges misread non-English answers and future tense.** A small judge marked "Что будет создано" (what will be created) as a claim that files were created. Say in the rubric that the answer may be in any language, and spell out what does *not* count as a failure. Re-check a surprising FAIL in the report before changing the skill.
+- **Baseline matters.** On the first suite, plain Claude scored 0.00–0.50 on the positive cases and the skill 1.00, a mean Δ of +0.60. A case where both arms score the same tells you nothing about the skill.

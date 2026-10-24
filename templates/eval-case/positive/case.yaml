@@ -1,6 +1,8 @@
 schema_version: "1.1"
 name: skill-name-clean-case
+expected_outcome: |
+  What a good result looks like, in a few sentences.
 context:
-  # Read-only fixture directory inside this case folder.
-  # Fixtures must be synthetic or anonymized: see docs/DATA-POLICY.md.
-  add_dirs: [fixtures]
+  # Copies files/ into the run's workspace. Run evals with --scaffold.
+  # Input files must be synthetic or anonymized: see docs/DATA-POLICY.md.
+  scaffold_script: place-files.sh
