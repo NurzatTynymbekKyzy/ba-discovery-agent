@@ -76,3 +76,4 @@ The Google Drive connector enabled in Claude. Google Sheets as well, for dropdow
 | Version | Change |
 |---|---|
 | 0.2.0 | First version |
+| 2026-10-24 | 0.2.0 | @NurzatTynymbekKyzy | Pass | "Test Project 3" with templates: 22 items + `discovery.yaml`; all 10 Sheets got their template through Google Sheets (headers, widths, frozen row, dropdowns), all 4 Docs their headings, guidance and tables. Read back from Drive and checked against the templates. |
