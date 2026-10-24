@@ -1,0 +1,15 @@
+{
+  "name": "ba-discovery-agent",
+  "description": "Community-maintained AI agent for business analysts running greenfield Discovery on Google Workspace",
+  "owner": {
+    "name": "Nurzat Tynymbek kyzy",
+    "url": "https://github.com/NurzatTynymbekKyzy"
+  },
+  "plugins": [
+    {
+      "name": "ba-discovery",
+      "source": "./plugins/ba-discovery",
+      "description": "AI assistant for business analysts running greenfield Discovery on Google Workspace"
+    }
+  ]
+}

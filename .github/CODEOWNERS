@@ -1,0 +1,3 @@
+# Default reviewer for everything. Add a maintainer per skill as skills become Ready:
+# /plugins/ba-discovery/skills/<skill-name>/ @maintainer
+* @NurzatTynymbekKyzy

@@ -1,0 +1,55 @@
+name: Run evals
+
+# Evals are real model calls and cost money, so they never run automatically.
+# Run them by hand, or by adding the "run-evals" label to a pull request.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Only run cases with this tag (a skill name). Leave empty for the whole suite."
+        required: false
+        default: ""
+  pull_request:
+    types: [labeled]
+
+jobs:
+  evals:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-evals'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run eval suite
+        working-directory: plugins/ba-discovery
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAG: ${{ github.event.inputs.tag }}
+        run: |
+          TAG_ARGS=()
+          if [ -n "$TAG" ]; then TAG_ARGS=(--tag "$TAG"); fi
+          claude plugin eval . "${TAG_ARGS[@]}" \
+            --trust-plugin \
+            --json results.json \
+            --threshold 0.8 \
+            --model claude-sonnet-5-5 \
+            --judge-model claude-haiku-5-5 \
+            --no-publish \
+            --max-cost-usd 10
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: |
+            plugins/ba-discovery/results.json
+            plugins/ba-discovery/evals/results/
+          if-no-files-found: ignore

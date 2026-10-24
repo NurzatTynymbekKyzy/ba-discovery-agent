@@ -1,0 +1,2 @@
+# Eval suites for `claude plugin eval`, grouped by skill: evals/<skill-name>/<case-name>/
+# Start from templates/eval-case/ at the repo root. See docs/EVALS.md.

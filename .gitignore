@@ -1,0 +1,15 @@
+# Eval run output (written by `claude plugin eval`)
+**/evals/results/
+
+# Real client material for local runs only. Never commit. See docs/DATA-POLICY.md
+private-fixtures/
+
+# Local eval output from CI-style runs
+results.json
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/

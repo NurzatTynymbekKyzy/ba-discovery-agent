@@ -1,0 +1,13 @@
+{
+  "name": "ba-discovery",
+  "displayName": "BA Discovery Agent",
+  "version": "0.1.0",
+  "description": "Helps business analysts run greenfield Discovery: sets up the Discovery workspace on Google Drive, turns client documents and workshop transcripts into summaries, a requirements register and a context canvas, with the BA approving every change.",
+  "author": {
+    "name": "Nurzat Tynymbek kyzy",
+    "url": "https://github.com/NurzatTynymbekKyzy"
+  },
+  "repository": "https://github.com/NurzatTynymbekKyzy/ba-discovery-agent",
+  "license": "MIT",
+  "keywords": ["business-analysis", "discovery", "requirements", "workshops", "google-workspace"]
+}
