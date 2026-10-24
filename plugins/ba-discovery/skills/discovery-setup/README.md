@@ -5,7 +5,7 @@
 
 ## What it does for you
 
-Creates the standard workspace for a new Discovery on your Google Drive in one step: numbered folders and empty Google Docs and Sheets for the plan, RAID log, decisions, stakeholders, context and requirements. Every Discovery gets the same layout, so you, the client team and the other skills always know where things live.
+Creates the standard workspace for a new Discovery on your Google Drive in one step: numbered folders and Google Docs and Sheets for the plan, RAID log, decisions, stakeholders, context and requirements, each built from a shared template: column headers, dropdowns and frozen headers in Sheets, headings and guidance in Docs. Every Discovery gets the same layout, so you, the client team and the other skills always know where things live.
 
 ## How to use it
 
@@ -48,15 +48,21 @@ Atlas — Discovery/
 
 The exact list lives in `references/structure.yaml`.
 
+## Templates
+
+Every Doc and Sheet is built from a template in `templates-source/discovery-setup/` at the repo root: ordinary `.xlsx` and `.docx` files you can open in Excel, Word or Google. To change a template, or suggest a new one, follow [How to change a template](../../../../docs/CHANGE-A-TEMPLATE.md). No git or code needed.
+
+If Google Sheets isn't connected in Claude, Sheets are still created, with their column headers only, and the skill tells you which ones.
+
 ## What it won't do
 
-- Fill the documents: they are created empty.
+- Fill the documents with project content: they start from the template, with no client information.
 - Change the structure per project. Add your own folders afterwards; to change the standard for everyone, propose it in the repo.
 - Share, move, rename or delete anything you already have.
 
 ## What you need
 
-The Google Drive connector enabled in Claude.
+The Google Drive connector enabled in Claude. Google Sheets as well, for dropdowns and formatting in Sheets.
 
 ## Smoke test
 

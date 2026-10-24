@@ -4,9 +4,11 @@
 #
 # Types:
 #   folder  - a Drive folder
-#   doc     - an empty Google Doc       (mimeType application/vnd.google-apps.document)
-#   sheet   - an empty Google Sheet     (mimeType application/vnd.google-apps.spreadsheet)
+#   doc     - a Google Doc,   built from references/templates/<template>.doc.html
+#   sheet   - a Google Sheet, built from references/templates/<template>.sheet.json
 #
+# `template` names the file in templates-source/discovery-setup/ (without its
+# extension) that BAs edit; the build turns it into the file the skill reads.
 # `{project}` is replaced with the project name the BA gives.
 # `key` is a stable identifier other skills use to find an item in
 # _agent/discovery.yaml. Never change a key once released; rename `name` instead.
@@ -15,17 +17,17 @@ root:
   name: "{project} — Discovery"
 
 items:
-  - { key: readme,                type: doc,    name: "00 README" }
+  - { key: readme,                type: doc,    name: "00 README", template: readme }
 
   - key: management
     type: folder
     name: "01 Discovery Management"
     items:
-      - { key: discovery_plan,      type: sheet, name: "Discovery Plan" }
-      - { key: communication_plan,  type: sheet, name: "Communication Plan" }
-      - { key: access_checklist,    type: sheet, name: "Access Checklist" }
-      - { key: raid_log,            type: sheet, name: "RAID Log" }
-      - { key: decision_log,        type: sheet, name: "Decision Log" }
+      - { key: discovery_plan,      type: sheet, name: "Discovery Plan",     template: discovery-plan }
+      - { key: communication_plan,  type: sheet, name: "Communication Plan", template: communication-plan }
+      - { key: access_checklist,    type: sheet, name: "Access Checklist",   template: access-checklist }
+      - { key: raid_log,            type: sheet, name: "RAID Log",           template: raid-log }
+      - { key: decision_log,        type: sheet, name: "Decision Log",       template: decision-log }
 
   - { key: client_inputs,         type: folder, name: "02 Client Inputs" }
 
@@ -34,28 +36,28 @@ items:
     name: "03 Meetings"
     items:
       - { key: transcripts,         type: folder, name: "Transcripts" }
-      - { key: meeting_summaries,   type: doc,    name: "Meeting Summaries" }
+      - { key: meeting_summaries,   type: doc,    name: "Meeting Summaries", template: meeting-summaries }
 
   - key: stakeholders
     type: folder
     name: "04 Stakeholders"
     items:
-      - { key: stakeholder_matrix,  type: sheet, name: "Stakeholder Matrix" }
+      - { key: stakeholder_matrix,  type: sheet, name: "Stakeholder Matrix", template: stakeholder-matrix }
 
   - key: context
     type: folder
     name: "05 Context"
     items:
-      - { key: context_canvas,      type: sheet, name: "Project Context Canvas" }
-      - { key: as_is_context,       type: doc,   name: "AS-IS Context" }
-      - { key: glossary,            type: sheet, name: "Glossary" }
+      - { key: context_canvas,      type: sheet, name: "Project Context Canvas", template: project-context-canvas }
+      - { key: as_is_context,       type: doc,   name: "AS-IS Context",          template: as-is-context }
+      - { key: glossary,            type: sheet, name: "Glossary",               template: glossary }
 
   - key: requirements
     type: folder
     name: "06 Requirements"
     items:
-      - { key: requirements_register, type: sheet, name: "Requirements Register" }
-      - { key: open_questions_log,    type: sheet, name: "Open Questions Log" }
-      - { key: constraints,           type: doc,   name: "Constraints" }
+      - { key: requirements_register, type: sheet, name: "Requirements Register", template: requirements-register }
+      - { key: open_questions_log,    type: sheet, name: "Open Questions Log",    template: open-questions-log }
+      - { key: constraints,           type: doc,   name: "Constraints",           template: constraints }
 
   - { key: agent,                 type: folder, name: "_agent" }

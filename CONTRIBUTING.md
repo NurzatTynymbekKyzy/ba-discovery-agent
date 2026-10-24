@@ -4,6 +4,7 @@ Thank you for helping. This project values working skills over many skills, so e
 
 ## Ways to help
 
+- **Improve a template.** The Docs and Sheets the agent creates come from Excel and Word files anyone can edit. See [docs/CHANGE-A-TEMPLATE.md](docs/CHANGE-A-TEMPLATE.md): a browser is enough.
 - **Report a problem.** Open an issue: what you asked, what you expected, what you got. Describe the input; never attach client material.
 - **Add an eval case.** A new realistic case that the current skill fails is one of the most valuable contributions.
 - **Improve a skill.** Change the skill and its evals together.

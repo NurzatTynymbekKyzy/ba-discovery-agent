@@ -1,0 +1,67 @@
+name: Templates
+
+# BAs change templates by uploading .xlsx/.docx files to templates-source/.
+# On a pull request this job converts them, fails with a plain explanation if
+# something can't be carried over, and shows how the skill will build each
+# changed template. On main it regenerates the files the skill reads and
+# commits them, so contributors never touch generated files.
+on:
+  pull_request:
+    paths: ["templates-source/**", "tools/templates/**", "tools/check_structure.py",
+             "plugins/ba-discovery/skills/discovery-setup/references/**"]
+  push:
+    branches: [main]
+    paths: ["templates-source/**", "tools/templates/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install converters
+        run: pip install openpyxl mammoth pyyaml
+
+      - name: Convert templates
+        run: python tools/templates/build_templates.py
+
+      - name: Check the folder structure and its templates
+        run: python tools/check_structure.py
+
+      - name: Show what the skill will build
+        if: always()
+        run: |
+          {
+            echo "## Templates the skill will build"
+            echo
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- templates-source | xargs -r -n1 basename)
+              if [ -n "$CHANGED" ]; then
+                echo "Changed in this pull request: $(echo $CHANGED | tr '\n' ' ')"
+                echo
+              fi
+            fi
+            python tools/templates/build_templates.py --summary || true
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit regenerated templates
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add plugins/ba-discovery/skills/*/references/templates
+          if git diff --cached --quiet; then
+            echo "Generated templates already up to date."
+          else
+            git commit -m "Regenerate templates from templates-source"
+            git push
+          fi

@@ -21,6 +21,7 @@ Early. The repository skeleton, quality standards and eval setup are in place; s
 | [docs/SKILL-CONTRACT.md](docs/SKILL-CONTRACT.md) | What a skill must contain and the Definition of Done |
 | [docs/EVALS.md](docs/EVALS.md) | How we prove a skill works |
 | [docs/DATA-POLICY.md](docs/DATA-POLICY.md) | Why no client material ever enters this repo |
+| [docs/CHANGE-A-TEMPLATE.md](docs/CHANGE-A-TEMPLATE.md) | How to improve a Doc or Sheet template with only a browser |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose and land a change |
 
 ## Repository layout
@@ -31,7 +32,9 @@ plugins/ba-discovery/             # the plugin BAs install
 ├── .claude-plugin/plugin.json
 ├── skills/<skill-name>/          # one capability each
 └── evals/<skill-name>/           # eval cases for `claude plugin eval`
+templates-source/                 # Excel and Word templates for the files skills create (edit these)
 templates/                        # starting points for a new skill and its eval cases
+tools/                            # template converter and structure check
 docs/                             # architecture, standards, roadmap
 ```
 
