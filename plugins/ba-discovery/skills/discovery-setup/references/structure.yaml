@@ -4,11 +4,11 @@
 #
 # Types:
 #   folder  - a Drive folder
-#   doc     - a Google Doc,   built from references/templates/<template>.doc.html
-#   sheet   - a Google Sheet, built from references/templates/<template>.sheet.json
+#   doc     - a Google Doc,   built from its entry in references/templates.json
+#   sheet   - a Google Sheet, built from its entry in references/templates.json
 #
 # `template` names the file in templates-source/discovery-setup/ (without its
-# extension) that BAs edit; the build turns it into the file the skill reads.
+# extension) that BAs edit; the build turns all of them into references/templates.json.
 # `{project}` is replaced with the project name the BA gives.
 # `key` is a stable identifier other skills use to find an item in
 # _agent/discovery.yaml. Never change a key once released; rename `name` instead.

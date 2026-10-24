@@ -16,6 +16,7 @@ Exit code 0 when the file is valid, 1 otherwise.
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -26,11 +27,13 @@ REPO = Path(__file__).resolve().parents[1]
 STRUCTURE = REPO / "plugins/ba-discovery/skills/discovery-setup/references/structure.yaml"
 TYPES = {"folder", "doc", "sheet"}
 TEMPLATE_SOURCE = REPO / "templates-source/discovery-setup"
-TEMPLATE_BUILT = REPO / "plugins/ba-discovery/skills/discovery-setup/references/templates"
+TEMPLATE_BUNDLE = REPO / "plugins/ba-discovery/skills/discovery-setup/references/templates.json"
 KEY_RE = re.compile(r"^[a-z][a-z0-9_]*$")
 
 
 def check(path: Path) -> list[str]:
+    global BUNDLE
+    BUNDLE = json.loads(TEMPLATE_BUNDLE.read_text(encoding="utf-8")) if TEMPLATE_BUNDLE.exists() else {}
     problems: list[str] = []
     data = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
@@ -76,11 +79,13 @@ def check(path: Path) -> list[str]:
                     problems.append(f"{label}: every doc and sheet needs a template")
                 else:
                     ext = {"doc": ".docx", "sheet": ".xlsx"}[typ]
-                    built = {"doc": ".doc.html", "sheet": ".sheet.json"}[typ]
                     if not (TEMPLATE_SOURCE / f"{template}{ext}").exists():
                         problems.append(f"{label}: template source {template}{ext} not found in templates-source/discovery-setup/")
-                    if not (TEMPLATE_BUILT / f"{template}{built}").exists():
-                        problems.append(f"{label}: built template {template}{built} missing; run tools/templates/build_templates.py")
+                    entry = BUNDLE.get(template)
+                    if entry is None:
+                        problems.append(f"{label}: template {template} missing from templates.json; run tools/templates/build_templates.py")
+                    elif entry.get("type") != typ:
+                        problems.append(f"{label}: template {template} is a {entry.get('type')}, but the item is a {typ}")
             elif template:
                 problems.append(f"{label}: folders don't take a template")
             if "items" in item:

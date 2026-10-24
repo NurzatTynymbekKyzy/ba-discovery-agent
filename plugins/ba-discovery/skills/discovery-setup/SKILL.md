@@ -33,7 +33,7 @@ Give a BA who starts a new Discovery a ready workspace on Google Drive in one st
 
 On the BA's Google Drive, inside the chosen location:
 
-- the folder `{project} — Discovery` with exactly the folders, Docs and Sheets listed in `references/structure.yaml`, each Doc and Sheet built from its template in `references/templates/` (headings and guidance for Docs; tabs, column headers, widths, frozen header row and dropdowns for Sheets);
+- the folder `{project} — Discovery` with exactly the folders, Docs and Sheets listed in `references/structure.yaml`, each Doc and Sheet built from its template in `references/templates.json` (headings and guidance for Docs; tabs, column headers, widths, frozen header row and dropdowns for Sheets);
 - `_agent/discovery.yaml`, a record of every created item and its Drive id, in the format in `references/discovery-record.md`.
 
 ## Procedure
@@ -71,12 +71,16 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
 
    Then ask: "Shall I create it?" Stop and wait. Continue only on a clear yes. If the BA asks for a different structure, explain that this skill creates the standard structure so that every Discovery and every skill finds things in the same place, and that they can add their own folders afterwards.
 
-7. **Create the items.** Create the root folder first (if needed), then the items in the order they appear in the structure, each folder before its contents. Every call uses `create_file` with `title` = the item's name and `parentId` = the id of its folder. Then, by type:
+7. **Create the items.** First read `references/templates.json`, once: it holds every template, keyed by the `template` name in the structure. Don't read it earlier; until the BA approves, the templates aren't needed.
+
+   Create the root folder first (if needed), then the items in the order they appear in the structure, each folder before its contents. Every call uses `create_file` with `title` = the item's name and `parentId` = the id of its folder. Then, by type:
 
    - **folder**: `contentMimeType: application/vnd.google-apps.folder`.
-   - **doc**: read `references/templates/<template>.doc.html` and pass its whole content as `textContent`, with `contentMimeType: text/html`. Drive converts it into a Google Doc with the template's headings, guidance and tables.
-   - **sheet**, with the Google Sheets tool: create it with `contentMimeType: application/vnd.google-apps.spreadsheet` and no content; then read `references/templates/<template>.sheet.json` and call `update_spreadsheet` with the new file's id and its `requests` array, exactly as stored. The requests assume the new spreadsheet's first tab has id 0, which is how Drive creates an empty spreadsheet.
+   - **doc**: pass the template's `html` as `textContent`, with `contentMimeType: text/html`. Drive converts it into a Google Doc with the template's headings, guidance and tables.
+   - **sheet**, with the Google Sheets tool: create it with `contentMimeType: application/vnd.google-apps.spreadsheet` and no content; then call `update_spreadsheet` with the new file's id and the template's `requests` array, exactly as stored. The requests assume the new spreadsheet's first tab has id 0, which is how Drive creates an empty spreadsheet.
    - **sheet**, without the Google Sheets tool, or if `update_spreadsheet` fails twice for this file: create it with `contentMimeType: text/csv` and the template's `fallback_csv` as `textContent`, so it at least has its column headers. Note the file for the report.
+
+   Make independent calls in parallel where you can: the folders of one level, then the files inside them.
 
    Pass template content unchanged. The templates are reviewed by the community; an improvised edit here would make this BA's file differ from everyone else's without anyone noticing.
 
