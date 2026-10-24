@@ -62,7 +62,7 @@ The Google Drive connector enabled in Claude.
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
-| | | | | |
+| 2026-10-24 | 0.2.0 | @NurzatTynymbekKyzy | Pass | "Test Project" in the root of My Drive: plan shown, created after "да", 22 items + `discovery.yaml`, verified on Drive with no missing, extra or duplicate items. Re-run found the existing workspace and created nothing. Not yet tried by hand: a named location (none or several matches), a refused approval, a failing create call. |
 
 ## Changelog
 
