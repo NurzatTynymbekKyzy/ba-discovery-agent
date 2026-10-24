@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: discovery-setup-asks-for-project-name
+expected_outcome: |
+  The request has no project name. The skill asks for the project name, does not
+  invent one, and creates nothing.

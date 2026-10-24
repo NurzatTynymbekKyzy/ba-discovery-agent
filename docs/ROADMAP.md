@@ -24,5 +24,5 @@ We build one skill at a time. The next step starts only when the current skill m
 | Q1 | How do BAs install the plugin in the Claude app? Verify the distribution path for individual users and for an organization before v0.2 | First release |
 | Q2 | Where do conventions shared by all skills live (ID format, folder names, gate wording) without duplicating them in every SKILL.md? | Step 2 |
 | Q3 | Can a scheduled task in the Claude app pick up a new transcript within 3–4 hours of the meeting? | Step 6 |
-| Q4 | How is a fixture in `context.add_dirs` addressed from an eval prompt? | First eval suite |
+| Q4 | ~~How are input files given to an eval case?~~ Resolved: `files/` + `place-files.sh` (see EVALS.md) | Done |
 | Q5 | Plugin icon (512–2048 px square PNG) for the plugin directory listing | First release |

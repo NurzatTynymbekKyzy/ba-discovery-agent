@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: discovery-setup-russian-request
+expected_outcome: |
+  The same behavior as the English request, triggered by a Russian one. Without
+  Google Drive, the skill shows the full standard structure for "Атлас — Discovery"
+  (folder and file names stay in English), explains how to connect Google Drive,
+  and claims nothing was created.

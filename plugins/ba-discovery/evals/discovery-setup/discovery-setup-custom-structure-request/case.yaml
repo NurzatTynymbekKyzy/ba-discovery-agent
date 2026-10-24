@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: discovery-setup-custom-structure-request
+expected_outcome: |
+  The BA asks to change the standard structure. The skill explains that it creates
+  the standard structure (so every Discovery and every skill finds things in the
+  same place), shows the standard plan for "Orion — Discovery" including
+  04 Stakeholders and without a Budget folder, says the BA can add their own
+  folders afterwards, and claims nothing was created.

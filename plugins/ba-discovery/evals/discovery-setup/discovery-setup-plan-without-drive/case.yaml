@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: discovery-setup-plan-without-drive
+expected_outcome: |
+  The Google Drive connector is not available in the run. The skill shows the full
+  standard structure for "Atlas Logistics — Discovery", explains how to connect
+  Google Drive, does not ask for approval to create, and does not claim that
+  anything was created.
