@@ -40,29 +40,33 @@ On the BA's Google Drive, inside the chosen location:
 
 1. **Read the structure.** Read `references/structure.yaml`. It is the only source of what to create. Do not add, drop or rename anything.
 
-2. **Get the inputs.** Take the project name from the request. If there is none, ask for it and stop until the BA answers. Use the name exactly as the BA wrote it. If the BA named a location, keep it for step 5; otherwise the location is the root of My Drive.
+2. **Get the inputs.** Take the project name from the request. If there is none, ask for it and stop until the BA answers. Use the name exactly as the BA wrote it. If the BA named a location, keep it for step 4; otherwise the location is the root of My Drive.
 
-3. **Check that Google Drive is reachable, before asking for approval.** Look for the Google Drive tools (`create_file`, `search_files`). Some environments load tools on demand: if you have a tool search, search for "Google Drive" before deciding they are missing. This check calls nothing on Drive; it only tells you whether you will be able to act, so the BA is never asked to approve a plan that can't run.
+Steps 3 to 5 only read. Do all of them before asking for approval, so the BA approves one plan that is known to be possible, and approves only once.
+
+3. **Check that Google Drive is reachable.** Look for the Google Drive tools (`create_file`, `search_files`). Some environments load tools on demand: if you have a tool search, search for "Google Drive" before deciding they are missing.
 
    If the Drive tools are not available, reply with:
-   - the plan from step 4 (location and tree), so the BA sees what they will get;
+   - the plan (location as the BA named it, or the root of My Drive, and the full tree as in step 6), so the BA sees what they will get;
    - how to fix it: "I can't reach your Google Drive yet. In Claude, open Settings → Connectors and connect Google Drive. If it is already connected, turn it on for this chat in the chat's connector menu. Then ask me again and I'll create the workspace.";
    - no question "Shall I create it?": there is nothing to approve yet.
 
    Then stop. Do not describe anything as created.
 
-4. **Show the plan and ask for approval (gate).** Show:
-   - the location (or "the root of your My Drive");
-   - the full tree that will be created, as a code block, with `{project}` replaced and each file marked `(Doc)` or `(Sheet)`;
+4. **Find the location.** If the BA named a location, find it with `search_files` (`title = '<name>' and mimeType = 'application/vnd.google-apps.folder'`). One match: use it. Several: list them with their parent folder or owner and ask which one; stop until the BA answers. None: say the folder wasn't found, ask for another folder or offer the root of My Drive; stop until the BA answers. Use `'root'` for My Drive.
+
+5. **Check for an existing workspace.** Search the location for a folder named exactly `{project} — Discovery`.
+   - Not found: everything will be created.
+   - Found: list what is inside it, level by level, and compare with the structure by name and type. Only the missing items will be created. Never rename, move, change or delete anything the BA already has.
+   - Found and nothing is missing: tell the BA the workspace is already complete, give the link, and stop. There is nothing to approve.
+
+6. **Show the plan and ask for approval (gate).** Show:
+   - the location (the folder found in step 4, or "the root of your My Drive");
+   - for a new workspace: the full tree, as a code block, with `{project}` replaced and each file marked `(Doc)` or `(Sheet)`;
+   - for an existing workspace: what already exists and the list of missing items that will be added; if `_agent/discovery.yaml` exists, that the old record will be moved to Drive trash and replaced by an updated one;
    - one line: "All files are created empty. Nothing is shared, moved or deleted."
 
    Then ask: "Shall I create it?" Stop and wait. Continue only on a clear yes. If the BA asks for a different structure, explain that this skill creates the standard structure so that every Discovery and every skill finds things in the same place, and that they can add their own folders afterwards.
-
-5. **Find the location.** If the BA named a location, find it with `search_files` (`title = '<name>' and mimeType = 'application/vnd.google-apps.folder'`). One match: use it. Several: list them with their paths or owners and ask which one. None: say so and ask. Use `'root'` for My Drive.
-
-6. **Check for an existing workspace.** Search the location for a folder named exactly `{project} — Discovery`.
-   - Not found: everything will be created. Go to step 7.
-   - Found: list what is inside it, level by level, and compare with the structure by name and type. Tell the BA what already exists and what is missing, and ask for approval to create only the missing items. If `_agent/discovery.yaml` exists and items will be added, include in this approval that the old record will be moved to Drive trash and replaced. Never rename, move, change or delete anything the BA already has.
 
 7. **Create the items.** Create the root folder first (if needed), then the items in the order they appear in the structure, each folder before its contents. Use `create_file` with:
    - `title`: the item's name;
@@ -72,7 +76,7 @@ On the BA's Google Drive, inside the chosen location:
 
    Keep the id Drive returns for every item. If a call fails, retry it once. If it fails again, stop creating and go to step 9.
 
-8. **Write the record.** Create `_agent/discovery.yaml` as described in `references/discovery-record.md`, using only ids returned by Drive or found in step 6.
+8. **Write the record.** Create `_agent/discovery.yaml` as described in `references/discovery-record.md`, using only ids returned by Drive or found in step 5.
 
 9. **Verify and report.** List the contents of the root folder and each subfolder and compare them with the structure. Then report in a few lines:
    - the link to the root folder;
@@ -101,7 +105,7 @@ On the BA's Google Drive, inside the chosen location:
 | No project name | Asks for it; creates nothing |
 | Google Drive connector not connected, or off in this chat | Shows the plan, explains how to connect or turn it on, asks no approval question; creates nothing |
 | Named location not found, or several matches | Asks the BA to choose; creates nothing until then |
-| Workspace already exists | Shows what exists and what is missing; creates only the missing items after approval |
+| Workspace already exists | Shows what exists and what is missing; creates only the missing items after approval. If nothing is missing, says so with the link and asks nothing |
 | A create call fails twice | Stops; reports what was created and what is missing; says that running setup again completes it |
 | BA asks for a custom structure | Explains the standard structure is fixed; offers to create it, after which the BA can add folders |
 | BA does not approve | Creates nothing; offers to adjust the location or name |
