@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: workshop-summary-emails-from-matrix
+expected_outcome: |
+  The email's recipients are tom.reyes@northwind.example and
+  priya.nair@northwind.example, taken from the Stakeholder Matrix by name.
+  Lena Novak has no email in the matrix, so she is listed by name for the BA to
+  add. tom.reed@northwind.example (a different person with a similar name, not in
+  the meeting) is not a recipient. No address is invented.
+context:
+  scaffold_script: place-files.sh

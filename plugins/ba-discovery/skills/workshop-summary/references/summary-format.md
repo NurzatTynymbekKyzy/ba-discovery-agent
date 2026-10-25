@@ -49,7 +49,7 @@ Relative dates ("next Friday") become a date only if the meeting date makes them
 
 ## Email (Gmail draft)
 
-- **To:** attendees' emails from the calendar event, without the BA's own address. None found: leave empty and list the participants' names at the gate.
+- **To:** attendees' emails from the calendar event, without the BA's own address; for participants the event doesn't cover, the `Email` from the Stakeholder Matrix. Anyone left: list their names at the gate.
 - **Subject:** `{meeting title}: summary and next steps ({YYYY-MM-DD})`
 - **Body** (`htmlBody`), short, no sources or timestamps:
 
