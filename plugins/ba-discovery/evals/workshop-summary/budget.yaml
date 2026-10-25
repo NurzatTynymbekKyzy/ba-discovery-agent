@@ -11,11 +11,11 @@ static:
     references/summary-format.md: 1450   # read once, when writing the summary
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
-# Turns: about 20% above the means measured on the first eval run.
-# Cost: set from the first run on eval_model.
+# Turns and cost: about 20% above the means of the 3-run suite on
+# claude-sonnet-5-5, 2026-10-25 (means: turns 6-6.3, cost 0.06-0.11 USD).
 eval_model: claude-sonnet-5-5
 eval:
-  workshop-summary-clean:                       { max_cost_usd: null, max_turns: 6 }
-  workshop-summary-messy-russian:               { max_cost_usd: null, max_turns: 6 }
-  workshop-summary-edge-reversal-and-injection: { max_cost_usd: null, max_turns: 6 }
-  workshop-summary-should-not-trigger:          { max_cost_usd: null, max_turns: 4 }
+  workshop-summary-clean:                       { max_cost_usd: 0.12, max_turns: 8 }
+  workshop-summary-messy-russian:               { max_cost_usd: 0.13, max_turns: 8 }
+  workshop-summary-edge-reversal-and-injection: { max_cost_usd: 0.12, max_turns: 8 }
+  workshop-summary-should-not-trigger:          { max_cost_usd: 0.07, max_turns: 4 }
