@@ -1,0 +1,21 @@
+# Token and cost budget for workshop-summary, checked by tools/evals/check_budget.py.
+# A ceiling, not a target. To raise a number, do it in the pull request that
+# needs it and explain what the extra tokens buy.
+
+# Estimated tokens (characters / 3.6), checked free on every pull request.
+# Set about 10% above the sizes measured on 2026-10-25.
+static:
+  description: 140          # in context in every chat, triggered or not
+  skill_md: 3100            # loaded when the skill runs
+  references:
+    references/summary-format.md: 1450   # read once, when writing the summary
+
+# Per case, mean per run with the plugin loaded (judge calls excluded).
+# Turns and cost: about 20% above the means of the 3-run suite on
+# claude-sonnet-5-5, 2026-10-25 (means: turns 6-6.3, cost 0.06-0.11 USD).
+eval_model: claude-sonnet-5-5
+eval:
+  workshop-summary-clean:                       { max_cost_usd: 0.12, max_turns: 8 }
+  workshop-summary-messy-russian:               { max_cost_usd: 0.13, max_turns: 8 }
+  workshop-summary-edge-reversal-and-injection: { max_cost_usd: 0.12, max_turns: 8 }
+  workshop-summary-should-not-trigger:          { max_cost_usd: 0.07, max_turns: 4 }
