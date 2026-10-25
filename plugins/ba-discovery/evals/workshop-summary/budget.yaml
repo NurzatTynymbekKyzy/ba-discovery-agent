@@ -19,4 +19,3 @@ eval:
   workshop-summary-messy-russian:               { max_cost_usd: null, max_turns: 6 }
   workshop-summary-edge-reversal-and-injection: { max_cost_usd: null, max_turns: 6 }
   workshop-summary-should-not-trigger:          { max_cost_usd: null, max_turns: 4 }
-  workshop-summary-emails-from-matrix:          { max_cost_usd: null, max_turns: 6 }

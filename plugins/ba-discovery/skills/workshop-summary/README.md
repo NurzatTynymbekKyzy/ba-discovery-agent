@@ -35,8 +35,7 @@ Without a named transcript, the skill takes the newest one that has no summary y
 
 - A Discovery workspace created by `discovery-setup`
 - Google Drive, Google Docs and Gmail connected in Claude, all on the same Google account
-- Google Calendar (optional): finds the meeting's title, date and participants' emails.
-- Without a calendar invite, the skill takes emails from the **Email** column of the Stakeholder Matrix, matching participants by name. Anyone it can't match is listed for you to add.
+- Google Calendar (optional): finds the meeting's title, date and participants' emails. Without a calendar invite, the email's recipients are left for you to fill in.
 
 ## Smoke test
 
