@@ -56,7 +56,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
 5. **Write the summary and the email** following `references/summary-format.md`. Read it once, now. Work from the transcript only:
    - A decision is something the participants agreed on, not something one person proposed. If a decision was reversed later in the meeting, record the final one and note the change.
-   - An action item has an owner and a due date only if someone said them. Otherwise write "Owner: not agreed" or "Due: not agreed" and add an open question.
+   - An action item has an owner and a due date only if someone said them. Otherwise write "Owner: not agreed" or "Due: not agreed" and add an open question. Leave out the BA's own promise to send this summary: the email is that action.
    - Every decision and action item carries its source: the transcript timestamp, or a short quote if there are no timestamps.
    - Write in the language of the meeting.
 

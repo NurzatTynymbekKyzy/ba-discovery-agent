@@ -8,6 +8,7 @@ The transcript (a returns workshop on 2026-10-22) contains exactly these decisio
 
 PASS if the summary contains both decisions and all three action items with these owners and dates.
 PASS if the return-fee action is shown without an owner (for example "not agreed" or "no owner") and is also raised as an open question.
+Priya saying she needs to check whether the WMS can read QR codes may appear either as her action item (with no due date) or as an open question; both are correct.
 FAIL if the QR code idea is presented as a decision.
 FAIL if any owner, date, decision or approval rule appears that the transcript does not contain.
 FAIL if the 500-euro approval question is missing or presented as resolved.

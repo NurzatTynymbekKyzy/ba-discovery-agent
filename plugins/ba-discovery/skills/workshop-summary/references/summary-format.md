@@ -45,7 +45,7 @@ Links to Drive files: `https://drive.google.com/open?id=<file id>`.
 <p><i>Drafted from the transcript by workshop-summary and reviewed by the BA before saving.</i></p>
 ```
 
-Relative dates ("next Friday") become a date only if the meeting date makes them certain; write the date and keep the original words in brackets: `2026-10-30 ("next Friday")`.
+Relative dates ("next Friday") become a date only if the meeting date makes them certain; write the date and keep the original words in brackets: `2026-10-30 ("next Friday")`. Vague periods ("next week", "soon", "after the release") stay exactly as said, with no date or date range added.
 
 ## Email (Gmail draft)
 
