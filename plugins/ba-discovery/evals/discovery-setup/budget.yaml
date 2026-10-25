@@ -1,0 +1,26 @@
+# Token and cost budget for discovery-setup, checked by tools/evals/check_budget.py.
+# A ceiling, not a target. To raise a number, do it in the pull request that
+# needs it and explain what the extra tokens buy.
+
+# Estimated tokens (characters / 3.6), checked free on every pull request.
+# Set about 10% above the sizes measured on 2026-10-24.
+static:
+  description: 200          # in context in every chat, triggered or not
+  skill_md: 3500            # loaded when the skill runs
+  references:               # every file the skill can read during a run
+    references/structure.yaml: 900
+    references/discovery-record.md: 550
+    references/templates.json: 9200    # read once, after approval; most of it is copied into tool calls
+
+# Per case, mean per run with the plugin loaded (judge calls excluded).
+# Turns are checked on every run. Cost depends on the model, so it is checked
+# only for runs with eval_model, the model CI pins.
+# Turns: about 20% above the means measured on 2026-10-24.
+# Cost: set from the first run on eval_model.
+eval_model: claude-sonnet-5-5
+eval:
+  discovery-setup-plan-without-drive:       { max_cost_usd: null, max_turns: 7 }
+  discovery-setup-russian-request:          { max_cost_usd: null, max_turns: 7 }
+  discovery-setup-custom-structure-request: { max_cost_usd: null, max_turns: 7 }
+  discovery-setup-asks-for-project-name:    { max_cost_usd: null, max_turns: 4 }
+  discovery-setup-should-not-trigger:       { max_cost_usd: null, max_turns: 2 }

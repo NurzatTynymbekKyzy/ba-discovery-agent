@@ -6,11 +6,17 @@ BAs edit ordinary files:
   templates-source/<skill>/<name>.xlsx   a Sheet template (Excel or Google Sheets export)
   templates-source/<skill>/<name>.docx   a Doc template   (Word or Google Docs export)
 
-This script writes, for each one:
-  plugins/ba-discovery/skills/<skill>/references/templates/<name>.sheet.json
-  plugins/ba-discovery/skills/<skill>/references/templates/<name>.doc.html
+This script converts all of a skill's templates into one compact file:
+  plugins/ba-discovery/skills/<skill>/references/templates.json
 
-Nobody edits the generated files by hand. CI regenerates them on main.
+  { "<name>": {"type": "sheet", "requests": [...], "fallback_csv": "..."},
+    "<name>": {"type": "doc", "html": "..."} }
+
+One file, no whitespace, nothing the skill doesn't use: the skill reads it
+once per run, and Claude copies the requests into tool calls, so every
+character here costs tokens on every run.
+
+Nobody edits the generated file by hand. CI regenerates it on main.
 
 Sheet templates carry: tabs, header row (names, bold, background colour),
 column widths, frozen rows, dropdowns with typed values, and static text in
@@ -23,7 +29,7 @@ tables. Images and unusual styles are reported.
 
 Usage:
   build_templates.py             build every template, write changed files
-  build_templates.py --check     exit 1 if a generated file is missing or stale
+  build_templates.py --check     exit 1 if the generated file is missing or stale
   build_templates.py --summary   print a Markdown summary of every template (for CI)
 """
 from __future__ import annotations
@@ -51,10 +57,6 @@ class Problems(list):
 
 def rel(path: Path) -> str:
     return path.relative_to(REPO).as_posix() if path.is_relative_to(REPO) else str(path)
-
-
-def output_dir(source: Path) -> Path:
-    return SKILLS / source.parent.name / "references" / "templates"
 
 
 # ---------------------------------------------------------------- sheets
@@ -176,25 +178,24 @@ def read_sheet_template(path: Path, problems: Problems) -> dict:
     return {"tabs": tabs}
 
 
-def _cell(value, bold: bool) -> dict:
-    cell: dict = {}
+def _value(value) -> dict:
     if isinstance(value, bool):
-        cell["userEnteredValue"] = {"boolValue": value}
-    elif isinstance(value, (int, float)):
-        cell["userEnteredValue"] = {"numberValue": value}
-    else:
-        cell["userEnteredValue"] = {"stringValue": str(value)}
-    if bold:
-        cell["userEnteredFormat"] = {"textFormat": {"bold": True}}
-    return cell
+        return {"boolValue": value}
+    if isinstance(value, (int, float)):
+        return {"numberValue": value}
+    return {"stringValue": str(value)}
 
 
 def sheet_requests(spec: dict) -> list[dict]:
-    """Exact batchUpdate requests for a spreadsheet created empty (first tab id 0)."""
+    """Exact batchUpdate requests for a spreadsheet created empty (first tab id 0).
+
+    Kept as short as the API allows: header names in one request, header style
+    in one request, one width request per run of equal-width columns."""
     reqs: list[dict] = []
     for i, tab in enumerate(spec["tabs"]):
         sid = 0 if i == 0 else 1000 + i
-        n = len(tab["columns"])
+        cols = tab["columns"]
+        n = len(cols)
         props = {"sheetId": sid, "title": tab["name"],
                  "gridProperties": {"frozenRowCount": tab["freeze_rows"]}}
         if i == 0:
@@ -203,25 +204,46 @@ def sheet_requests(spec: dict) -> list[dict]:
         else:
             reqs.append({"addSheet": {"properties": props}})
 
-        header_bold = tab["header"].get("bold", False)
-        rows = [{"values": [_cell(c["name"], header_bold) for c in tab["columns"]]}]
+        rows = [{"values": [{"userEnteredValue": _value(c["name"])} for c in cols]}]
+        any_bold = False
         for row in tab.get("rows", []):
-            rows.append({"values": [_cell(v, b) if v != "" else {} for v, b in zip(row["values"], row["bold"])]})
-        reqs.append({"updateCells": {
-            "start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0},
-            "rows": rows, "fields": "userEnteredValue,userEnteredFormat.textFormat.bold"}})
+            cells = []
+            for v, b in zip(row["values"], row["bold"]):
+                cell = {} if v == "" else {"userEnteredValue": _value(v)}
+                if v != "" and b:
+                    cell["userEnteredFormat"] = {"textFormat": {"bold": True}}
+                    any_bold = True
+                cells.append(cell)
+            rows.append({"values": cells})
+        fields = "userEnteredValue,userEnteredFormat.textFormat.bold" if any_bold else "userEnteredValue"
+        reqs.append({"updateCells": {"start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0},
+                                     "rows": rows, "fields": fields}})
 
+        fmt: dict = {}
+        if tab["header"].get("bold"):
+            fmt["textFormat"] = {"bold": True}
         if tab["header"].get("background"):
+            fmt["backgroundColorStyle"] = {"rgbColor": _rgb(tab["header"]["background"])}
+        if fmt:
+            # Full field paths: the Sheets connector rejects the "a(b,c)" mask shorthand.
+            parts = (["userEnteredFormat.textFormat.bold"] if "textFormat" in fmt else []) + \
+                    (["userEnteredFormat.backgroundColorStyle"] if "backgroundColorStyle" in fmt else [])
             reqs.append({"repeatCell": {
-                "range": {"sheetId": sid, "startRowIndex": 0, "endRowIndex": 1,
-                          "startColumnIndex": 0, "endColumnIndex": n},
-                "cell": {"userEnteredFormat": {"backgroundColorStyle": {"rgbColor": _rgb(tab["header"]["background"])}}},
-                "fields": "userEnteredFormat.backgroundColorStyle"}})
+                "range": {"sheetId": sid, "endRowIndex": 1, "endColumnIndex": n},
+                "cell": {"userEnteredFormat": fmt},
+                "fields": ",".join(parts)}})
 
-        for ci, col in enumerate(tab["columns"]):
+        ci = 0
+        while ci < n:
+            cj = ci
+            while cj + 1 < n and cols[cj + 1]["width"] == cols[ci]["width"]:
+                cj += 1
             reqs.append({"updateDimensionProperties": {
-                "range": {"sheetId": sid, "dimension": "COLUMNS", "startIndex": ci, "endIndex": ci + 1},
-                "properties": {"pixelSize": col["width"]}, "fields": "pixelSize"}})
+                "range": {"sheetId": sid, "dimension": "COLUMNS", "startIndex": ci, "endIndex": cj + 1},
+                "properties": {"pixelSize": cols[ci]["width"]}, "fields": "pixelSize"}})
+            ci = cj + 1
+
+        for ci, col in enumerate(cols):
             if col.get("options"):
                 reqs.append({"setDataValidation": {
                     "range": {"sheetId": sid, "startRowIndex": 1, "endRowIndex": DROPDOWN_ROWS,
@@ -232,26 +254,20 @@ def sheet_requests(spec: dict) -> list[dict]:
     return reqs
 
 
-def build_sheet(path: Path, problems: Problems) -> tuple[Path, str] | None:
+def build_sheet(path: Path, problems: Problems) -> tuple[dict, dict] | None:
     spec = read_sheet_template(path, problems)
     if problems:
         return None
     first = spec["tabs"][0]
     csv_line = ",".join('"' + c["name"].replace('"', '""') + '"' if "," in c["name"] or '"' in c["name"]
                         else c["name"] for c in first["columns"])
-    doc = {
-        "_generated": GENERATED_NOTE.format(source=rel(path)),
-        "spec": spec,
-        "fallback_csv": csv_line + "\n",
-        "requests": sheet_requests(spec),
-    }
-    out = output_dir(path) / (path.stem + ".sheet.json")
-    return out, json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
+    entry = {"type": "sheet", "requests": sheet_requests(spec), "fallback_csv": csv_line + "\n"}
+    return entry, spec
 
 
 # ------------------------------------------------------------------ docs
 
-def build_doc(path: Path, problems: Problems) -> tuple[Path, str] | None:
+def build_doc(path: Path, problems: Problems) -> tuple[dict, dict] | None:
     import mammoth
 
     with path.open("rb") as fh:
@@ -264,18 +280,22 @@ def build_doc(path: Path, problems: Problems) -> tuple[Path, str] | None:
             problems.add(path.name, text)
     if problems:
         return None
-    note = f"<!-- {GENERATED_NOTE.format(source=rel(path))} -->\n"
     # Google's HTML import draws table borders only when the table asks for them.
     body = result.value.replace("<table>", '<table border="1">')
-    html = note + "<html><body>" + body + "</body></html>\n"
-    out = output_dir(path) / (path.stem + ".doc.html")
-    return out, html
+    html = "<html><body>" + body + "</body></html>"
+    return {"type": "doc", "html": html}, {"html": html}
 
 
 # ------------------------------------------------------------------ main
 
-def build_all() -> tuple[list[tuple[Path, Path, str]], list[str]]:
-    built, errors = [], []
+def bundle_path(skill: str) -> Path:
+    return SKILLS / skill / "references" / "templates.json"
+
+
+def build_all():
+    """Returns ({skill: {name: entry}}, [(source, spec)], [errors])."""
+    bundles: dict[str, dict] = {}
+    specs, errors = [], []
     for source in sorted(SOURCE_ROOT.glob("*/*")):
         if source.name.startswith(("~$", ".")):
             continue
@@ -288,27 +308,35 @@ def build_all() -> tuple[list[tuple[Path, Path, str]], list[str]]:
             if source.suffix.lower() != ".md":
                 errors.append(f"{rel(source)}: only .xlsx and .docx templates are supported")
             continue
-        if problems:
+        if problems or res is None:
             errors.append(f"{rel(source)}:\n" + "\n".join(f"    - {p}" for p in problems))
-        else:
-            built.append((source, *res))
-    return built, errors
+            continue
+        entry, spec = res
+        skill = source.parent.name
+        bundles.setdefault(skill, {"_generated": GENERATED_NOTE.format(source=f"templates-source/{skill}/")})
+        bundles[skill][source.stem] = entry
+        specs.append((source, spec))
+    return bundles, specs, errors
 
 
-def summary(built) -> str:
+def render(bundle: dict) -> str:
+    return json.dumps(bundle, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+def summary(specs) -> str:
+    import re
     lines = ["| Template | Type | Content |", "|---|---|---|"]
-    for source, out, text in built:
-        if out.suffix == ".json":
-            spec = json.loads(text)["spec"]
+    for source, spec in specs:
+        if "tabs" in spec:
             parts = []
             for tab in spec["tabs"]:
                 cols = ", ".join(c["name"] + (f" ▾({'/'.join(c['options'])})" if c.get("options") else "")
                                  for c in tab["columns"])
-                parts.append(f"**{tab['name']}**: {cols}")
+                rows = f" · {len(tab['rows'])} preset rows" if tab.get("rows") else ""
+                parts.append(f"**{tab['name']}**: {cols}{rows}")
             lines.append(f"| `{source.name}` | Sheet | {'<br>'.join(parts)} |")
         else:
-            import re
-            heads = re.findall(r"<h[1-3]>(.*?)</h[1-3]>", text)
+            heads = re.findall(r"<h[1-3]>(.*?)</h[1-3]>", spec["html"])
             lines.append(f"| `{source.name}` | Doc | {' · '.join(re.sub('<[^>]+>', '', h) for h in heads)} |")
     return "\n".join(lines)
 
@@ -319,27 +347,32 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--summary", action="store_true")
     args = ap.parse_args(argv)
 
-    built, errors = build_all()
+    bundles, specs, errors = build_all()
     for e in errors:
         print(f"✗ {e}")
 
     if args.summary:
-        print(summary(built))
+        print(summary(specs))
         return 1 if errors else 0
+    if errors:
+        print("Nothing written: fix the templates above first.")
+        return 1
 
     stale = False
-    for source, out, text in built:
+    for skill, bundle in bundles.items():
+        out = bundle_path(skill)
+        text = render(bundle)
         current = out.read_text(encoding="utf-8") if out.exists() else None
         if current == text:
-            print(f"= {rel(out)}")
+            print(f"= {rel(out)} ({len(bundle) - 1} templates)")
         elif args.check:
             print(f"✗ {rel(out)} is out of date")
             stale = True
         else:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(text, encoding="utf-8")
-            print(f"✓ {rel(out)}")
-    return 1 if errors or stale else 0
+            print(f"✓ {rel(out)} ({len(bundle) - 1} templates)")
+    return 1 if stale else 0
 
 
 if __name__ == "__main__":

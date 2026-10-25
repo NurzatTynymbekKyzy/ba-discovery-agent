@@ -1,0 +1,19 @@
+# Copy to plugins/ba-discovery/evals/<skill-name>/budget.yaml and fill in.
+# Checked by tools/evals/check_budget.py. A ceiling, not a target: to raise a
+# number, do it in the pull request that needs it and explain what it buys.
+
+# Estimated tokens (characters / 3.6), checked free on every pull request.
+# Measure the skill, then set each limit about 10% above.
+static:
+  description: 200          # in context in every chat; keep it short
+  skill_md: 3500            # loaded when the skill runs
+  references:               # list EVERY file in references/: unlisted files fail the check
+    references/output-format.md: 600
+
+# Per eval case, mean per run with the plugin loaded (judge calls excluded).
+# Turns are checked on every eval run; cost only for runs on eval_model.
+# Run the suite once, then set each limit about 20% above the measured mean.
+eval_model: claude-sonnet-5-5
+eval:
+  skill-name-clean:              { max_cost_usd: null, max_turns: 6 }
+  skill-name-should-not-trigger: { max_cost_usd: null, max_turns: 2 }

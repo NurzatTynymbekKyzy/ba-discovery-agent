@@ -32,3 +32,6 @@ jobs:
         run: |
           pip install pyyaml
           python tools/check_structure.py
+
+      - name: Check token budgets
+        run: python tools/evals/check_budget.py static

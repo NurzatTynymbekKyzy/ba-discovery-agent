@@ -53,6 +53,22 @@ For `llm` graders, write concrete PASS and FAIL lines, and state that formatting
 - Each suite: mean Δ above zero. If the plugin doesn't beat plain Claude, the skill isn't earning its place.
 - A change to a ready skill must not lower any case below 0.8 or the suite mean.
 
+## Token budget
+
+Quality comes first, but every run of a skill costs tokens for every BA, every time. So each skill has a budget in `evals/<skill-name>/budget.yaml` (copy `templates/eval-case/budget.yaml`), checked three ways:
+
+| Check | What it measures | When | Cost |
+|---|---|---|---|
+| `tools/evals/check_budget.py static` | Estimated tokens of the description (in every chat), SKILL.md and every file in `references/` | Every pull request, in CI | Free |
+| Efficiency graders in eval cases | Behavior that wastes tokens: a large file read before it is needed, a file read twice (`tool_used` with `max`) | Every eval run | Free (no judge) |
+| `tools/evals/check_budget.py results` | Mean turns and mean cost per run of each case, with the plugin loaded | After an eval run | Part of the run |
+
+Cost depends on the model, and the eval result file does not record which one ran, so cost is checked only when you pass the budget's `eval_model` (the model CI pins). Turns are checked on every run.
+
+A budget is a ceiling, not a target. If a change needs more, raise the number in the same pull request and say what the extra tokens buy; the reviewer decides whether that is worth it.
+
+What we learned on `discovery-setup`: the biggest cost was not the instructions but data the model reads and then copies into tool calls. Putting all templates in one compact file, read once and only after approval, cut the template tokens per run by 41%.
+
 ## Commands
 
 From `plugins/ba-discovery/`:
@@ -67,6 +83,10 @@ claude plugin eval . --tag workshop-summary --runs 1 --ablation none
 # What CI runs
 claude plugin eval . --trust-plugin --json results.json --threshold 0.8 \
   --model claude-sonnet-5-5 --judge-model claude-haiku-5-5 --no-publish --max-cost-usd 10
+
+# Token budget, from the repo root
+python3 tools/evals/check_budget.py static
+python3 tools/evals/check_budget.py results plugins/ba-discovery/results.json --model claude-sonnet-5-5
 ```
 
 Requires Claude Code 2.1.269 or later. Every run is a real model call billed to your account, so use `--max-cost-usd` and run single cases while iterating.

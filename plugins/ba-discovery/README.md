@@ -9,13 +9,10 @@ An assistant for business analysts who join a greenfield project and run Discove
 
 ## Install
 
-In Claude Code 2.1.275 or later:
+- **Claude app:** Customize → Plugins → Add marketplace → `NurzatTynymbekKyzy/ba-discovery-agent` → install **ba-discovery**
+- **Claude Code 2.1.275 or later:** `/plugin install ba-discovery --marketplace NurzatTynymbekKyzy/ba-discovery-agent`
 
-```
-/plugin install ba-discovery --marketplace NurzatTynymbekKyzy/ba-discovery-agent
-```
-
-Install steps for the Claude app are added at the first release, once the distribution path is verified (see `docs/ROADMAP.md`).
+Full steps, Google connectors and a first check: [Install the plugin](../../README.md#install-the-plugin) in the repository README.
 
 ## Skills
 

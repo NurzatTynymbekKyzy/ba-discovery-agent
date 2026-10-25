@@ -44,6 +44,17 @@ jobs:
             --no-publish \
             --max-cost-usd 10
 
+      - uses: actions/setup-python@v5
+        if: always()
+        with:
+          python-version: "3.12"
+
+      - name: Check token and cost budgets
+        if: always()
+        run: |
+          pip install pyyaml
+          python tools/evals/check_budget.py results plugins/ba-discovery/results.json --model claude-sonnet-5-5
+
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4

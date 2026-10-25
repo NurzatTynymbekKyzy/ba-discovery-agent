@@ -7,7 +7,7 @@ This file guides Claude Code sessions that develop the plugin. It is not loaded 
 - `plugins/ba-discovery/skills/` — one folder per skill; the agent's instructions
 - `plugins/ba-discovery/evals/` — eval cases, one folder per skill
 - `templates/` — copy these to start a skill or an eval case
-- `templates-source/` — Excel/Word templates for the Docs and Sheets skills create; `tools/templates/build_templates.py` turns them into `skills/<skill>/references/templates/` (never edit those by hand)
+- `templates-source/` — Excel/Word templates for the Docs and Sheets skills create; `tools/templates/build_templates.py` turns them into `skills/<skill>/references/templates.json` (never edit it by hand)
 - `docs/` — architecture, skill contract, evals, data policy, roadmap
 
 ## Rules
@@ -19,11 +19,13 @@ This file guides Claude Code sessions that develop the plugin. It is not loaded 
 5. Keep each SKILL.md under 500 lines; move formats and long examples into `references/`.
 6. Do not add a `bin/` folder to the plugin: the Claude app won't install it.
 7. Work on one skill at a time, in the order in `docs/ROADMAP.md`.
+8. Every skill has a token budget in `plugins/ba-discovery/evals/<skill>/budget.yaml` and at least one efficiency grader (see `docs/EVALS.md`, Token budget).
 
 ## Checks before finishing
 
 ```bash
 claude plugin validate . && claude plugin validate ./plugins/ba-discovery --strict
+python3 tools/evals/check_budget.py static
 cd plugins/ba-discovery && claude plugin eval . --tag <skill-name> --runs 1 --ablation none
 ```
 
