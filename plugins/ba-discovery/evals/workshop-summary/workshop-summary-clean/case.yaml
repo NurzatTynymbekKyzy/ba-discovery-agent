@@ -1,0 +1,14 @@
+schema_version: "1.1"
+name: workshop-summary-clean
+expected_outcome: |
+  The skill summarizes the transcript: two decisions (release one is consumer
+  returns only, B2B out of scope; refunds only to the original payment method),
+  each with its timestamp; action items for Priya (WMS API docs, 2026-10-30)
+  and Tom (return reasons, before the session on 2026-10-27), and the return-fee
+  check with no owner ("not agreed"); open questions on approval of refunds
+  above 500 euros, the return fee owner and whether the WMS can read QR codes
+  (the QR idea is not a decision). It drafts a short follow-up email without
+  inventing email addresses, and says nothing was saved or sent because Google
+  Drive and Gmail are not connected.
+context:
+  scaffold_script: place-files.sh
