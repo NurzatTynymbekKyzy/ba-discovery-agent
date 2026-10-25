@@ -12,6 +12,7 @@
 - [ ] `claude plugin validate ./plugins/ba-discovery --strict` passes
 - [ ] Eval cases added or updated for the changed behavior
 - [ ] Suite for the touched skill run locally: no case below 0.8, mean not lower than before
+- [ ] Token budget holds (`python3 tools/evals/check_budget.py static`, and `results` after the eval run); any raised limit is explained below
 - [ ] Skill README updated (usage, limits, changelog)
 
 ## Eval results
