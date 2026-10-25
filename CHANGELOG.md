@@ -2,6 +2,13 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
+## Unreleased (0.3.0)
+
+- New skill `workshop-summary`: summary Doc per meeting in `03 Meetings`, a linked line in the Meeting Summaries log, a follow-up email as a Gmail draft; one approval; every decision and action item carries its timestamp or quote
+- Meeting Summaries template is now a one-line-per-meeting log, newest first
+- Install steps for the Claude app and Claude Code in the README
+- Token budgets for every skill, checked in CI
+
 ## 0.2.0 — 2026-10-24
 
 - New skill `discovery-setup`: creates the standard Discovery workspace on Google Drive (numbered folders, Docs and Sheets built from templates) after one approval, and writes `_agent/discovery.yaml` with the id of every item for the other skills

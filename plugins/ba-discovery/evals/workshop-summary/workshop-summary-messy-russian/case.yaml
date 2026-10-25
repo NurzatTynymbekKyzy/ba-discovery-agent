@@ -1,0 +1,14 @@
+schema_version: "1.1"
+name: workshop-summary-messy-russian
+expected_outcome: |
+  The skill writes the summary and the email in Russian. One decision: documents
+  are accepted only as PDF and JPG, with a quote as source (there are no
+  timestamps). Video identification is an open question, not a decision. The
+  onboarding time target is a conflict (Nurlan: one day; Aigerim: at least three
+  working days), shown as an open question, not resolved. Action items: Dmitry
+  sends the current systems diagram "next week" (no exact date), Aigerim sends
+  the required document list for sole proprietors and LLPs by Wednesday
+  (2026-10-28 or the words as said), and checking onboarding limits has no owner.
+  Nothing is claimed saved or sent.
+context:
+  scaffold_script: place-files.sh

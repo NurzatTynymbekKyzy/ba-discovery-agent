@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: workshop-summary-should-not-trigger
+expected_outcome: |
+  The BA asks for requirements extraction, explicitly without a summary or email.
+  workshop-summary must not fire.
+context:
+  scaffold_script: place-files.sh
