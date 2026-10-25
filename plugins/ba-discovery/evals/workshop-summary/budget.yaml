@@ -6,7 +6,7 @@
 # Set about 10% above the sizes measured on 2026-10-25.
 static:
   description: 140          # in context in every chat, triggered or not
-  skill_md: 2850            # loaded when the skill runs
+  skill_md: 3100            # loaded when the skill runs
   references:
     references/summary-format.md: 1450   # read once, when writing the summary
 
