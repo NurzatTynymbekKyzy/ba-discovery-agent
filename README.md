@@ -10,8 +10,46 @@ Early. The repository skeleton, quality standards and eval setup are in place; s
 
 ## For business analysts
 
-- What the plugin does and how to install it: [plugins/ba-discovery/README.md](plugins/ba-discovery/README.md)
-- You need Claude with your own Google Drive, Docs, Sheets and Gmail connectors enabled.
+What the plugin does, skill by skill: [plugins/ba-discovery/README.md](plugins/ba-discovery/README.md).
+
+### Install the plugin
+
+**In the Claude app** (web or desktop):
+
+1. Open **Customize** in the sidebar, then **Plugins**.
+2. Select **Add marketplace** and enter `NurzatTynymbekKyzy/ba-discovery-agent`.
+3. Find **ba-discovery** in the list and click **Install**.
+
+The plugin is saved to your account, so it also works in Claude Code. To get new versions, select **Check for updates** on the marketplace, or turn on **Sync automatically**.
+
+On a Team or Enterprise plan, your organization may manage plugins centrally. If you can't add a marketplace yourself, ask an Owner to add this repository for the organization.
+
+**In Claude Code** (2.1.275 or later):
+
+```
+/plugin install ba-discovery --marketplace NurzatTynymbekKyzy/ba-discovery-agent
+```
+
+In older versions, add the marketplace first, then install:
+
+```
+/plugin marketplace add NurzatTynymbekKyzy/ba-discovery-agent
+/plugin install ba-discovery@ba-discovery-agent
+```
+
+Update later with `/plugin marketplace update ba-discovery-agent`.
+
+### Connect Google Workspace
+
+The plugin works on your own Google account; it holds no access of its own. In Claude, connect **Google Drive**, **Google Docs**, **Google Sheets** and **Gmail**, all with the **same Google account**: files created through one connector are not visible to another on a different account.
+
+### Check that it works
+
+Start a new chat and type, for example:
+
+> Set up a new Discovery workspace for project Acme on my Google Drive.
+
+Claude shows the folder and file plan and asks before creating anything. If it doesn't, check that the plugin is enabled under **Customize → Plugins**.
 
 ## For contributors
 
