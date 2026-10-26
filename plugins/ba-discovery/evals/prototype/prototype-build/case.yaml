@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: prototype-build
+expected_outcome: |
+  The response contains one complete HTML wireframe built from the kit: the six
+  screens with the ids from the map (class-list, class-details, booking-confirmed,
+  my-bookings, waitlist-offer, attendees) plus a coverage screen; navigation with
+  data-go; REQ tags (req-tag) next to elements; the club filter marked as an
+  assumption; no REQ-004 or mobile-app content; only the kit's classes.
+context:
+  scaffold_script: place-files.sh

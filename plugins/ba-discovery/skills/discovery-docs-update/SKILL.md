@@ -49,7 +49,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
 2. **Read the documents**, in parallel, with `get_values`: `Requirements!A:K`, `Updates!B:C`, `Decisions!A:H`, `Risks!A:G`, `Questions!A:I`, `Canvas!A1:C13`. Keep each row's number. A transcript is done when its file id appears in the `Updates` links. Attached exports instead: read each once.
 
-3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`) and take the ones not done, oldest first, at most 3 per run (later meetings can change what earlier ones said). None: say the documents are up to date and stop.
+3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back, since Drive returns folder listings in pages) and take the ones not done, oldest first, at most 3 per run (later meetings can change what earlier ones said). None: say the documents are up to date and stop.
 
 4. **Read each transcript once**, oldest first, with `read_file_content`. If it returns nothing, try `get_file_metadata` with `snippetVerbosity: MAX_ALLOWED` and use its `contentSnippet`. Still nothing and the file was created in the last few minutes: Drive is still processing it, so tell the BA to ask again in a minute, and stop. Then read `meeting_summaries` with `read_file_content`; if it links a summary for this transcript, read that summary once. Use it only to cross-check decisions, actions and open questions; the transcript is the source.
 

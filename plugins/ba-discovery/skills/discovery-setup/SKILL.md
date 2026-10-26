@@ -59,7 +59,7 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
 
 5. **Check for an existing workspace.** Search the location for a folder named exactly `{project} — Discovery`.
    - Not found: everything will be created.
-   - Found: list what is inside it, level by level, and compare with the structure by name and type. Only the missing items will be created. Never rename, move, change or delete anything the BA already has.
+   - Found: list what is inside it, level by level (`pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back), and compare with the structure by name and type. Only the missing items will be created. Never rename, move, change or delete anything the BA already has.
    - Found and nothing is missing: tell the BA the workspace is already complete, give the link, and stop. There is nothing to approve.
 
 6. **Show the plan and ask for approval (gate).** Show:

@@ -11,7 +11,7 @@ We build one skill at a time. The next step starts only when the current skill m
 | 2 | `workshop-summary`: transcript → summary Doc, log line, email draft | Highest daily value; quality is easy to judge | In progress |
 | 3 | `doc-analysis`: primary documents → analysis Doc, prioritized questions, draft requirements, first canvas entries | The client's documents arrive first; the first session needs the questions | In progress |
 | 4 | `discovery-docs-update`: after a meeting, updates requirements (with history), decisions, risks, open questions and the canvas | One meeting, one review: the BA's "update docs" step; reads the transcript once for all five documents | In progress |
-| 5 | `prototype`: a clickable prototype from the register and canvas; updated after the client's feedback | Needs enough context: confirmed requirements and a clear scope | Planned |
+| 5 | `prototype`: a clickable wireframe from the Requirements Register, traced to REQ IDs, plus a screen spec Doc for the Figma designers; updated after the client's feedback | The BA decides when there is enough context; a wireframe validates flows, designers do the visual design | In progress |
 | 6 | `discovery-review`: two modes. "Where are we?" during the Discovery: what was analyzed and processed, open P1 questions, conflicts, and the suggested next step. "Is it complete?" at the end: every document checked, with a gap list | Replaces a separate orchestrator: the chat already picks and chains skills, so only the "what's next" view was missing | Planned |
 
 No separate orchestrator: Claude in the chat already picks the right skill from the BA's words and can run several in a row on request, each with its own review step. Every skill ends its report with a suggested next step.
