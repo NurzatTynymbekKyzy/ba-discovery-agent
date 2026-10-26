@@ -12,7 +12,7 @@ static:
     references/discovery-record.md: 550
     references/templates.json: 10400   # read once, after approval; most of it is copied into tool calls.
                                        # Raised from 9200 (2026-10-26): the Requirements Register gained History
-                                       # and Updates tabs, which requirements-register needs for traceability.
+                                       # and Updates tabs, which discovery-docs-update needs for traceability.
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
 # Turns are checked on every run. Cost depends on the model, so it is checked

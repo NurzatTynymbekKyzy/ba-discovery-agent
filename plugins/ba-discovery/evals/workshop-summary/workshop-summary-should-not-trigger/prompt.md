@@ -1,5 +1,5 @@
 ---
-description: Requirements extraction from a transcript belongs to requirements-register, not workshop-summary
+description: Requirements extraction from a transcript belongs to discovery-docs-update, not workshop-summary
 tags: [workshop-summary, negative]
 max_turns: 6
 allowed_tools: [Read, Glob, Grep, Skill]
