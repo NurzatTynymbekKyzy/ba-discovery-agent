@@ -29,7 +29,7 @@ Without a named transcript, it takes the transcripts not yet in `Updates`, oldes
 - Reword, retype or reprioritize requirements nobody discussed.
 - Count an idea or a vague "sounds good" as a requirement or a confirmation.
 - Decide conflicts between stakeholders.
-- Touch the canvas, RAID, Decision Log or question log: `canvas-update` does that.
+- Touch the canvas, RAID, Decision Log or question log: `discovery-docs-update` does that.
 
 ## Workspaces created before version 0.5
 

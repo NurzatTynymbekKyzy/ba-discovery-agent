@@ -19,7 +19,7 @@ After every client session the BA needs a summary the team can trust and a follo
 
 - Extracting requirements into the Requirements Register: `requirements-register`
 - Analyzing client documents (BRD, spreadsheets, screenshots): `doc-analysis`
-- Updating the Context Canvas, RAID or Decision Log: `canvas-update`
+- Updating the Context Canvas, RAID or Decision Log: `discovery-docs-update`
 - Setting up the Drive folders: `discovery-setup`
 
 ## Inputs

@@ -19,7 +19,7 @@ Requirements change in every client session: new ones appear, old ones are rewor
 
 - Summary and follow-up email of a meeting: `workshop-summary`
 - First analysis of client documents (BRD, decks, spreadsheets): `doc-analysis`
-- Updating the canvas, RAID or Decision Log: `canvas-update`
+- Updating the canvas, RAID or Decision Log: `discovery-docs-update`
 
 ## Inputs
 

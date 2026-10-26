@@ -22,7 +22,8 @@ Full steps, Google connectors and a first check: [Install the plugin](../../READ
 | `workshop-summary` | Turns a transcript into a summary Doc, a line in the Meeting Summaries log and a follow-up email draft | In progress: evals passing, tested on Drive |
 | `requirements-register` | Updates the register after meetings: new, changed (with history), confirmed, rejected, conflicts | In progress |
 | `doc-analysis` | Analyzes the client's documents: analysis Doc, prioritized questions, draft requirements, first canvas entries | In progress |
-| `canvas-update` | Updates the Context Canvas, RAID log, Decision Log and Open Questions | Planned |
+| `discovery-docs-update` | After a meeting, updates the Context Canvas, RAID log, Decision Log and Open Questions Log | Planned |
+| `session-prep` | Turns open questions into the next session's agenda, general to specific | Planned |
 
 A skill moves to **Ready** only when it meets the Definition of Done in `docs/SKILL-CONTRACT.md` at the repo root.
 
