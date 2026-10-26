@@ -1,7 +1,7 @@
 ---
 type: tool_used
 tool: Read
-input_match: 'discovery-docs-update\.csv'
+input_match: 'requirements-register\.csv'
 min: 1
 max: 1
 arm: with-only
