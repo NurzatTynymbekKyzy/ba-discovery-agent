@@ -26,4 +26,4 @@ With no spec, check 4 is "Not checked".
 Fix first: {the gap that blocks handover most, with its fix}
 ```
 
-Each gap names the document and the rows or sections, so the BA can find it. Write in the language of the documents.
+Write the five lines first, then the header: `{n}` is the number of lines that say OK. Each gap names the document and the rows or sections, so the BA can find it. Write in the language of the documents.
