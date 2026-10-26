@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: discovery-review-where-are-we
+expected_outcome: |
+  A short status in the chat. Of three logged meetings, the Prototype feedback session
+  (2026-10-14) is not yet in the register's Updates, so the next step is
+  discovery-docs-update with that transcript. The prototype (spec v1, 2026-10-12) is
+  behind: REQ-009 changed on 2026-10-15. Open P1/P2 questions: Q-001 (P1), Q-003 (P2).
+  No High risk is without an owner. Nothing is written.
+context:
+  scaffold_script: place-files.sh

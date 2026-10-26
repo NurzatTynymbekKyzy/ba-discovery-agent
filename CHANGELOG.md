@@ -2,6 +2,10 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
+## Unreleased (0.8.0)
+
+- New skill `discovery-review`, read-only, answers in the chat: "Where are we?" (stage, meetings not yet in the docs, counts, prototype freshness, one next step) and "Is it complete?" (a five-check list: context canvas, Business and User requirements, prototype exists and is current, open P1/P2 questions and High risks without owner)
+
 ## Unreleased (0.7.0)
 
 - New skill `prototype`: a clickable wireframe from the Requirements Register (all but Rejected), every element traced to its REQ ID, a coverage screen, and a screen spec Doc for designers; screen map approved before building; update mode after feedback; versions kept in a new `07 Prototype` folder
