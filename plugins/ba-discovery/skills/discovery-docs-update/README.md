@@ -51,6 +51,7 @@ Their Requirements Register has no `History` or `Updates` tab. Add two tabs with
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
+| 2026-10-26 | 0.6.0 | @NurzatTynymbekKyzy | Pass | Test Project 3, synthetic scope session: all five documents read, no summary for the meeting (transcript alone); the transcript read empty right after upload and was read through the metadata fallback. Approved with "yes": requirements 1 confirmed, 1 rejected, conflict cleared, 2 new; 3 decisions; 1 risk with owner; 3 questions answered; 5 canvas sections added to; Updates logged; everything read back. Found: canvas text is only added to, so "Release 1 channel disputed" stays next to the settled answer. |
 | 2026-10-26 | 0.5.0 (as `requirements-register`) | @NurzatTynymbekKyzy | Pass after fixes | Requirements only. Test Project 3, register filled by `doc-analysis`; synthetic follow-up transcript: 2 changed (versions 2, old text in History), 2 confirmed, 1 new, 1 conflict resolved and cleared; approved with "yes"; rows re-checked before updating; everything read back. Fixes found: Drive listings return only the first file by default (now up to 100); a just-uploaded file reads empty for about a minute; resolved conflicts need clearing. |
 
 ## Changelog
