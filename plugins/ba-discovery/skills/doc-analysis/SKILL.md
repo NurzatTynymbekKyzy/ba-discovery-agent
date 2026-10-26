@@ -56,7 +56,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
    - **Overall picture:** problem, goals, users, scope signals, systems, as the documents state them.
    - **Contradictions:** two documents, or two places in one document, that say different things. Show both, with sources. Each becomes a P1–P4 question.
    - **Gaps:** what a Discovery needs and the documents don't say (goals without metrics, no out-of-scope, users not named). Each becomes a question.
-   - **Questions:** prioritized general to specific: P1 goals, scope in and out, decision makers; P2 users and processes; P3 functional details; P4 non-functional and constraints. Skip any question already in the log.
+   - **Questions:** prioritized general to specific: P1 goals, success metrics, scope in and out (which sites, user groups, channels or releases), decision makers; P2 users and processes; P3 functional details; P4 non-functional and constraints. Skip any question already in the log.
    - **Requirements:** only what a document states as needed. One row per requirement; the same requirement in two documents is one row with both sources. A requirement contradicting another gets `Conflicts with` and a question. Skip any requirement already in the register. Priority only if the document states it explicitly (MoSCoW or an explicit ranking); otherwise leave it empty.
    - **Canvas:** for each section whose "What we know" is empty, a short entry with its source. For filled sections, put proposed additions in the analysis Doc instead.
    - Write in the language of the documents; if they mix languages, in the language the BA writes in.
