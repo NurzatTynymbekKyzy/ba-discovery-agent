@@ -1,0 +1,4 @@
+Risk ID,Description,Impact,Priority,Probability,Owner,Status
+R-001,Club booking system has no API for class capacity,Booking can't show free places,High,Medium,Tom Reyes,Open
+R-002,Front-desk staff not trained before launch,Members keep calling,High,High,,Open
+R-003,Pilot clubs change opening hours in December,Schedule changes,High,Low,,Closed
