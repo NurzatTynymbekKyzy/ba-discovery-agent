@@ -50,11 +50,10 @@ Columns: `Q ID, Question, Topic, Ask whom, Raised on, Priority, Status, Answer, 
 ["Q-007", "Which customer groups are in scope for the first release?", "Scope", "Product owner", "2026-10-26", "P1 Goals & scope", "Open", "", "BRD v2, §2 (no scope section)"]
 ```
 
-- **Q ID:** continue after the highest existing `Q-` number; start at `Q-001`.
+- **Q ID:** always `Q-` and three digits (`Q-001`), in the chat preview too. Sort the questions P1 to P4 first, then number them in that order, continuing after the highest existing `Q-` number; start at `Q-001`.
 - **Priority:** exactly one of `P1 Goals & scope`, `P2 Users & processes`, `P3 Functional`, `P4 Non-functional`.
 - **Question:** one question per row, open, neutral, answerable by one person; name the document when it helps ("The deck says mobile first, the BRD web first: which comes first?").
 - **Ask whom:** a role or name from the documents; empty if unknown.
-- Order rows P1 first, then P2, P3, P4.
 
 ## Requirements Register rows
 
@@ -64,7 +63,7 @@ Columns: `Req ID, Type, Requirement, Rationale, Priority, Source, Stakeholder, S
 ["REQ-012", "Functional", "Customers can start a return online without contacting support.", "Returns today arrive by phone and email.", "", "BRD v2, §4.2", "Head of Operations", "Draft", "", "1", "2026-10-26"]
 ```
 
-- **Req ID:** continue after the highest existing `REQ-` number; start at `REQ-001`.
+- **Req ID:** always `REQ-` and three digits (`REQ-001`), in the chat preview too; continue after the highest existing `REQ-` number; start at `REQ-001`.
 - **Type:** exactly one of `Business`, `User`, `Functional`, `Non-functional`.
 - **Requirement:** one testable statement, in the document's words where possible; no solution the document doesn't name.
 - **Priority:** `Must`, `Should`, `Could` or `Won't` only if the document states it; otherwise empty.

@@ -32,6 +32,10 @@ The skill takes every document it hasn't analyzed before. Run it again when new 
 - Read links, dashboards (Power BI) or videos. They are listed as "could not read" and turned into a question or access request.
 - Set requirement priorities the documents don't state.
 
+## Workspaces created before version 0.4
+
+Their Open Questions Log still has the High / Medium / Low priority dropdown, so the new P1–P4 values show a small warning triangle. To fix it, select column F in the log, open **Data → Data validation**, and replace the list with: `P1 Goals & scope, P2 Users & processes, P3 Functional, P4 Non-functional`.
+
 ## What you need
 
 - A Discovery workspace created by `discovery-setup`
@@ -41,6 +45,7 @@ The skill takes every document it hasn't analyzed before. Run it again when new 
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
+| 2026-10-26 | 0.4.0 | @NurzatTynymbekKyzy | Pass after fixes | Test Project 3, three synthetic documents in `02 Client Inputs` (BRD and deck as Google Docs, process as a Sheet): both contradictions and the unreadable dashboard found; preview approved with "yes"; analysis Doc, 11 questions, 10 draft requirements and 9 canvas sections saved and read back; the 4 canvas sections without facts stayed empty. Fixes found: Sheets are only sampled by `read_file_content` (now read in full); question IDs were numbered before sorting by priority (now after); an older workspace's question log still has the High/Medium/Low dropdown. |
 
 ## Changelog
 

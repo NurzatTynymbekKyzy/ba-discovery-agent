@@ -11,10 +11,12 @@ static:
     references/analysis-format.md: 1300   # read once, when writing the analysis
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
-# Turns and cost: set about 20% above the means of the first 3-run suite.
+# Turns and cost: about 20% above the means of the 3-run suites on
+# claude-sonnet-5-5, 2026-10-26. should-not-trigger runs longer because the
+# request is handled by workshop-summary, which is part of the same plugin.
 eval_model: claude-sonnet-5-5
 eval:
-  doc-analysis-clean:                       { max_cost_usd: null, max_turns: 10 }
-  doc-analysis-edge-contradiction-and-link: { max_cost_usd: null, max_turns: 10 }
-  doc-analysis-russian:                     { max_cost_usd: null, max_turns: 10 }
-  doc-analysis-should-not-trigger:          { max_cost_usd: null, max_turns: 4 }
+  doc-analysis-clean:                       { max_cost_usd: 0.15, max_turns: 9 }
+  doc-analysis-edge-contradiction-and-link: { max_cost_usd: 0.13, max_turns: 8 }
+  doc-analysis-russian:                     { max_cost_usd: 0.15, max_turns: 8 }
+  doc-analysis-should-not-trigger:          { max_cost_usd: 0.11, max_turns: 8 }
