@@ -11,10 +11,12 @@ static:
     references/register-format.md: 870   # read once, when proposing changes
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
-# Turns and cost: set about 20% above the means of the first 3-run suite.
+# Turns and cost: about 20% above the means of the 3-run suites on
+# claude-sonnet-5-5, 2026-10-26. should-not-trigger runs longer because the
+# request is handled by doc-analysis, which is part of the same plugin.
 eval_model: claude-sonnet-5-5
 eval:
-  requirements-register-clean:                          { max_cost_usd: null, max_turns: 10 }
-  requirements-register-edge-conflict-vague-injection:  { max_cost_usd: null, max_turns: 10 }
-  requirements-register-russian:                        { max_cost_usd: null, max_turns: 10 }
-  requirements-register-should-not-trigger:             { max_cost_usd: null, max_turns: 8 }
+  requirements-register-clean:                          { max_cost_usd: 0.10, max_turns: 9 }
+  requirements-register-edge-conflict-vague-injection:  { max_cost_usd: 0.10, max_turns: 9 }
+  requirements-register-russian:                        { max_cost_usd: 0.10, max_turns: 10 }
+  requirements-register-should-not-trigger:             { max_cost_usd: 0.13, max_turns: 9 }
