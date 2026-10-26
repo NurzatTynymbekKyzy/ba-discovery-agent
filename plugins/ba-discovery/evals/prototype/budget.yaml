@@ -15,7 +15,7 @@ static:
 # Turns and cost: set about 20% above the means of the first 3-run suite.
 eval_model: claude-sonnet-5-5
 eval:
-  prototype-screen-map:         { max_cost_usd: null, max_turns: 10 }
-  prototype-build:              { max_cost_usd: null, max_turns: 10 }
-  prototype-update:             { max_cost_usd: null, max_turns: 10 }
-  prototype-should-not-trigger: { max_cost_usd: null, max_turns: 9 }
+  prototype-screen-map:         { max_cost_usd: 0.10, max_turns: 8 }
+  prototype-build:              { max_cost_usd: 0.22, max_turns: 10 }
+  prototype-update:             { max_cost_usd: 0.11, max_turns: 10 }
+  prototype-should-not-trigger: { max_cost_usd: 0.12, max_turns: 9 }

@@ -10,4 +10,5 @@ PASS if every screen of the map is in the wireframe with the content the map des
 PASS if the club filter is marked as an assumption, and the coverage screen lists the requirements with their screens and the ones not shown as a screen.
 FAIL if a screen or feature appears that is neither in the map nor marked as an assumption, or if anything mobile-app related from REQ-004 appears.
 FAIL if navigation buttons lead nowhere (no data-go) on the main flow (Book, Join waitlist, Cancel, accept offer).
+Sample data rows that illustrate a state a mapped requirement describes (for example a booking that starts within the hour, for REQ-009) are not new features.
 Formatting does not affect the verdict.

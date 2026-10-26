@@ -10,4 +10,5 @@ PASS if the response shows a screen map (screens and flows) in which every funct
 PASS if business and non-functional requirements that have no screen are listed as such rather than silently dropped.
 FAIL if REQ-004 or a mobile-app-first screen is used.
 FAIL if a screen or feature appears that no requirement asks for (for example payments, ratings, a loyalty programme) without being marked as an assumption.
+A screen or state that directly serves a listed requirement (for example a trainer's list of classes leading to the attendee list for REQ-008, or a reminder preview for REQ-007) is not an invented feature. Notes about the register's data quality (a missing ID, odd dates) are allowed.
 The response may be in any language. Formatting does not affect the verdict.
