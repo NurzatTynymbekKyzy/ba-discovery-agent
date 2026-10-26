@@ -1,0 +1,13 @@
+Section,What we know,Source
+Problem or opportunity,"Members book group classes by phone or at the front desk; about 18% of booked places are no-shows.",BRD §1
+Business goals,Reduce no-shows. Let members book without calling or visiting the front desk.,BRD §2
+Success metrics,,
+Target users,"Members, front-desk staff, trainers.",BRD §1
+Scope: in,"Online booking and cancellation, waitlist, reminders, trainer attendee lists. Release 1 channel disputed (web vs mobile app).",BRD §3-4; Kickoff deck slide 4
+Scope: out,Membership payments (billed separately in ClubDesk).,BRD §3
+Key stakeholders,"Sara Lind, Head of Member Experience.",BRD header
+Current systems,ClubDesk (memberships and bookings).,BRD §1
+Constraints,,
+Assumptions,,
+Risks,,
+Open questions,See Open Questions Log.,

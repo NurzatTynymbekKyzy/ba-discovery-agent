@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: discovery-docs-update-canvas-settled
+expected_outcome: |
+  Scope: in contains "Release 1 channel disputed (web vs mobile app)". The meeting
+  settles it (release 1 is the website, the app comes in release 2; agreed at
+  00:01:21). The skill proposes replacing that phrase, shown as old -> new, and
+  keeps the rest of the cell. Success metrics, empty, gets the 10% target. Nothing
+  claimed saved.
+context:
+  scaffold_script: place-files.sh

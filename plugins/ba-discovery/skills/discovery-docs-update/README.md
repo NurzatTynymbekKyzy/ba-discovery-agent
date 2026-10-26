@@ -13,7 +13,7 @@ After a client session, it reads the meeting transcript once and proposes the up
 | Decision Log | Decisions taken in the meeting, with who decided; an earlier decision it replaces marked Superseded |
 | RAID log | Risks a participant named; status changes of risks discussed |
 | Open Questions Log | Questions answered in the meeting, with the answer; new open questions, prioritized P1 to P4 |
-| Project Context Canvas | New facts, added after the text already there |
+| Project Context Canvas | New facts, added after the text already there; a phrase the meeting settles ("channel disputed") is replaced, shown to you as old → new |
 
 Every item carries the speaker, the timestamp and the transcript. If you made a summary with `workshop-summary`, it is used as a cross-check. Each processed transcript is logged in the register's `Updates` tab, so the next run knows where to continue.
 
@@ -33,7 +33,7 @@ Without a named transcript, it takes the transcripts not done yet, oldest first,
 - Count an idea or a vague "sounds good" as a requirement, a confirmation or a decision.
 - Invent risks from its own judgment: only risks someone named.
 - Decide conflicts between stakeholders. An unresolved conflict also becomes an open question.
-- Replace anything: canvas text is added to, old requirement versions go to History.
+- Replace without asking: canvas text is added to, and only a phrase the meeting settled is replaced, after you see old → new; old requirement versions go to History.
 
 ## Workspaces created before version 0.5
 

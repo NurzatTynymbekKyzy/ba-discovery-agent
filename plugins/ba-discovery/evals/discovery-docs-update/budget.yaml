@@ -20,4 +20,5 @@ eval:
   discovery-docs-update-clean:                          { max_cost_usd: 0.10, max_turns: 9 }
   discovery-docs-update-edge-conflict-vague-injection:  { max_cost_usd: 0.10, max_turns: 9 }
   discovery-docs-update-russian:                        { max_cost_usd: 0.10, max_turns: 10 }
+  discovery-docs-update-canvas-settled:                 { max_cost_usd: null, max_turns: 10 }
   discovery-docs-update-should-not-trigger:             { max_cost_usd: 0.13, max_turns: 9 }

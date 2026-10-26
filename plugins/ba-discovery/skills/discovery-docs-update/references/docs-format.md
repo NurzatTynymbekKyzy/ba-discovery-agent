@@ -85,6 +85,7 @@ The log of processed meetings, kept in the Requirements Register. One row per tr
 Sections in order: Problem or opportunity, Business goals, Success metrics, Target users, Scope: in, Scope: out, Key stakeholders, Current systems, Constraints, Assumptions, Risks, Open questions.
 
 - `update_values` on `Canvas!B{row}:C{row}`: B = the existing text + a line break + the new fact; C = the existing source + `; ` + the new source. An empty section gets the fact alone.
+- **Settled entries:** when the meeting settles a phrase that calls something open, disputed or unknown ("Release 1 channel disputed (web vs mobile app)"), propose replacing just that phrase ("Release 1: website; mobile app in release 2"), shown in the chat as old → new. Leave the rest of the cell as it is; the source column keeps both sources.
 - Only facts said in the meeting; at most 2 short lines per section per meeting.
 
 ## Chat preview
