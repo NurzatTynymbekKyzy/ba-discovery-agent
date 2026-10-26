@@ -4,7 +4,8 @@ All notable changes to the `ba-discovery` plugin. Versions follow `version` in `
 
 ## Unreleased (0.5.0)
 
-- New skill `requirements-register`: transcripts not yet in the register become new, changed (old version kept in History), confirmed or rejected requirements and flagged conflicts, after one approval
+- New skill `discovery-docs-update`: after a meeting, one review updates all five documents: requirements (new, changed with History, confirmed, rejected, conflicts), Decision Log, RAID log, Open Questions Log (answers and new questions) and canvas. Built first as `requirements-register` (requirements only), then widened
+- Roadmap: `session-prep` dropped (questions come from doc-analysis and docs updates); `prototype` (with an update mode) and `discovery-review` (final completeness check) added
 - Requirements Register template gains History and Updates tabs
 
 ## 0.4.0

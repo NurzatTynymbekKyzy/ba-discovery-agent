@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: discovery-docs-update-russian
+expected_outcome: |
+  In Russian. Confirmed: REQ-001 (Айгерим, "да, подтверждаю"). Changed: REQ-004
+  becomes status in the personal account plus an SMS on every status change,
+  version 2, old text kept. New: compliance check takes no more than three working
+  days (Айгерим, Нурлан agreed). Not new: the chat bot ("это потом, не сейчас").
+  REQ-002 and REQ-003 unchanged.
+context:
+  scaffold_script: place-files.sh

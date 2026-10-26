@@ -18,8 +18,7 @@ At the start of a Discovery the client sends a pile of material: a BRD, spreadsh
 ## When not to use
 
 - A meeting or workshop transcript: `workshop-summary`
-- Updating requirements from later meetings, versioning, merging duplicates: `requirements-register`
-- Updating the canvas, RAID or Decision Log after meetings: `canvas-update`
+- Updating the documents after meetings (requirements, decisions, risks, questions, canvas): `discovery-docs-update`
 
 ## Inputs
 
