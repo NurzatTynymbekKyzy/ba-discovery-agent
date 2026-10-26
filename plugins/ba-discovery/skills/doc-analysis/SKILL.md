@@ -79,7 +79,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
    If a call fails, retry it once. If it fails again, report what was saved and what wasn't.
 
-8. **Verify and report.** Read back the new rows with `get_values` (only the appended range) and check the count. Report: the link to the analysis Doc, how many questions, requirements and canvas sections were added, what couldn't be read, and the next step: "Use the P1 questions to plan the first session."
+8. **Verify and report.** Read back the new rows with `get_values` (only the appended range) and check the count. Report: the link to the analysis Doc, how many questions, requirements and canvas sections were added, what couldn't be read, and the next step: "Use the P1 questions as the agenda of the next session. After the meeting, ask me to summarize it and update the docs."
 
 ## Gate
 

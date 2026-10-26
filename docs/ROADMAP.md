@@ -12,8 +12,9 @@ We build one skill at a time. The next step starts only when the current skill m
 | 3 | `doc-analysis`: primary documents → analysis Doc, prioritized questions, draft requirements, first canvas entries | The client's documents arrive first; the first session needs the questions | In progress |
 | 4 | `discovery-docs-update`: after a meeting, updates requirements (with history), decisions, risks, open questions and the canvas | One meeting, one review: the BA's "update docs" step; reads the transcript once for all five documents | In progress |
 | 5 | `prototype`: a clickable prototype from the register and canvas; updated after the client's feedback | Needs enough context: confirmed requirements and a clear scope | Planned |
-| 6 | `discovery-review`: final completeness check of every document, with a gap list | Closes the Discovery: the BA fixes the gaps by hand or in a last session | Planned |
-| 7 | Orchestrator (optional): chains skills in one request, with a gate before each step | Only if calling the skills one by one proves inconvenient; the BA always starts it by hand | Planned |
+| 6 | `discovery-review`: two modes. "Where are we?" during the Discovery: what was analyzed and processed, open P1 questions, conflicts, and the suggested next step. "Is it complete?" at the end: every document checked, with a gap list | Replaces a separate orchestrator: the chat already picks and chains skills, so only the "what's next" view was missing | Planned |
+
+No separate orchestrator: Claude in the chat already picks the right skill from the BA's words and can run several in a row on request, each with its own review step. Every skill ends its report with a suggested next step.
 
 ## Open questions
 
