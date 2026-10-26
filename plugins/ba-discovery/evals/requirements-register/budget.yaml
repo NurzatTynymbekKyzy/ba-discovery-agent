@@ -1,0 +1,20 @@
+# Token and cost budget for requirements-register, checked by tools/evals/check_budget.py.
+# A ceiling, not a target. To raise a number, do it in the pull request that
+# needs it and explain what the extra tokens buy.
+
+# Estimated tokens (characters / 3.6), checked free on every pull request.
+# Set about 10% above the sizes measured on 2026-10-26.
+static:
+  description: 130          # in context in every chat, triggered or not
+  skill_md: 2500            # loaded when the skill runs
+  references:
+    references/register-format.md: 870   # read once, when proposing changes
+
+# Per case, mean per run with the plugin loaded (judge calls excluded).
+# Turns and cost: set about 20% above the means of the first 3-run suite.
+eval_model: claude-sonnet-5-5
+eval:
+  requirements-register-clean:                          { max_cost_usd: null, max_turns: 10 }
+  requirements-register-edge-conflict-vague-injection:  { max_cost_usd: null, max_turns: 10 }
+  requirements-register-russian:                        { max_cost_usd: null, max_turns: 10 }
+  requirements-register-should-not-trigger:             { max_cost_usd: null, max_turns: 8 }

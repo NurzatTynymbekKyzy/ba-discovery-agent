@@ -1,0 +1,7 @@
+Req ID,Type,Requirement,Rationale,Priority,Source,Stakeholder,Status,Conflicts with,Version,Last changed
+REQ-001,Business,Reduce no-shows for group classes.,About 18% of booked places are no-shows.,,BRD §2,Sara Lind,Draft,,1,2026-10-26
+REQ-002,Functional,Members can book a class online and cancel it up to 2 hours before it starts.,,Must,BRD §4.1,Sara Lind,Draft,,1,2026-10-26
+REQ-003,Functional,"When a class is full, members can join a waitlist and are moved in automatically when a place frees up.",,Should,BRD §4.2,Sara Lind,Draft,,1,2026-10-26
+REQ-004,Functional,Members receive a reminder 24 hours before the class.,,,BRD §4.3,Sara Lind,Draft,,1,2026-10-26
+REQ-005,Functional,Trainers see the list of booked members for their class.,,,BRD §4.4,Sara Lind,Draft,,1,2026-10-26
+REQ-006,Functional,Members can rate a trainer after a class.,,Could,BRD §4.5,Sara Lind,Draft,,1,2026-10-26

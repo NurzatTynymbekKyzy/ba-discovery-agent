@@ -20,7 +20,7 @@ Full steps, Google connectors and a first check: [Install the plugin](../../READ
 |---|---|---|
 | `discovery-setup` | Creates the Discovery folder structure on your Drive, with Docs and Sheets built from shared templates | In progress: tested, 2 rare cases left to try by hand |
 | `workshop-summary` | Turns a transcript into a summary Doc, a line in the Meeting Summaries log and a follow-up email draft | In progress: evals passing, tested on Drive |
-| `requirements-register` | Extracts, deduplicates and versions requirements; flags conflicts | Planned |
+| `requirements-register` | Updates the register after meetings: new, changed (with history), confirmed, rejected, conflicts | In progress |
 | `doc-analysis` | Analyzes the client's documents: analysis Doc, prioritized questions, draft requirements, first canvas entries | In progress |
 | `canvas-update` | Updates the Context Canvas, RAID log, Decision Log and Open Questions | Planned |
 

@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: requirements-register-should-not-trigger
+expected_outcome: |
+  A first analysis of a client document belongs to doc-analysis;
+  requirements-register must not fire.
+context:
+  scaffold_script: place-files.sh

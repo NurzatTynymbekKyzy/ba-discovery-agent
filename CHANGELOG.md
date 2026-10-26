@@ -2,7 +2,12 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
-## Unreleased (0.4.0)
+## Unreleased (0.5.0)
+
+- New skill `requirements-register`: transcripts not yet in the register become new, changed (old version kept in History), confirmed or rejected requirements and flagged conflicts, after one approval
+- Requirements Register template gains History and Updates tabs
+
+## 0.4.0
 
 - New skill `doc-analysis`: new documents in Client Inputs become an analysis Doc, prioritized client questions (P1–P4), draft requirements and first canvas entries; one gate with partial approval; adds only, never overwrites
 - Open Questions Log priority is now P1 Goals & scope / P2 Users & processes / P3 Functional / P4 Non-functional

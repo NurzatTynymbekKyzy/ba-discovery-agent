@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: requirements-register-clean
+expected_outcome: |
+  Changed: REQ-002 cancellation window 2 hours -> 1 hour, version 2, old text to
+  History (01:10-01:51, Sara Lind). Confirmed: REQ-003 waitlist (03:23). New: the
+  waitlist offer must be accepted within 30 minutes or it passes to the next
+  person (03:31, Sara Lind; Omar Haddad agreed). Rejected: REQ-006 trainer ratings
+  (05:12). Not new: QR check-in (an idea, explicitly not now) and the 24-hour
+  reminder (a restatement of REQ-004). No conflicts. Nothing claimed saved.
+context:
+  scaffold_script: place-files.sh
