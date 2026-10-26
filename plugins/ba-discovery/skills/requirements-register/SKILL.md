@@ -47,9 +47,9 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
 2. **Read the register**, in parallel: `get_values` on `Requirements!A:K` and `Updates!B:C`. Keep each requirement's row number. A transcript is processed when its file id appears in the `Updates` links.
 
-3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`) and take the unprocessed ones, oldest first, at most 3 per run (later meetings can change what earlier ones said). None: say the register is up to date and stop.
+3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`) and take the unprocessed ones, oldest first, at most 3 per run (later meetings can change what earlier ones said). None: say the register is up to date and stop.
 
-4. **Read each transcript once**, oldest first: `read_file_content`; for `.vtt` files, which it returns empty, `get_file_metadata` with `snippetVerbosity: MAX_ALLOWED` and its `contentSnippet`.
+4. **Read each transcript once**, oldest first: `read_file_content`. If it returns nothing, try `get_file_metadata` with `snippetVerbosity: MAX_ALLOWED` and use its `contentSnippet`. Still nothing and the file was created in the last few minutes: Drive is still processing it, so tell the BA to ask again in a minute, and stop.
 
 5. **Find the changes.** Read `references/register-format.md` once, now. Then compare what was said with the register:
    - **New:** a need the client states that no requirement covers. Same meaning as an existing requirement is not new, even in other words.

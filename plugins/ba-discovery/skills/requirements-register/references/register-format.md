@@ -22,7 +22,7 @@ In the chat, show the changes as Markdown tables; write to the sheets only after
 
 **Confirmed:** H `Confirmed`; F = old source + `; confirmed: ` + source; K = today. **Rejected:** H `Rejected`; F = old source + `; rejected: ` + source; K = today. Update with `update_values` on `Requirements!F{row}` and `Requirements!H{row}`, `Requirements!K{row}`, or the whole range F to K with the unchanged cells repeated as read.
 
-**Conflict:** I on both requirements lists the other REQ ID (`, ` between several). A conflict with a statement that isn't a requirement yet: add that statement as a new `Draft` requirement first, then link the two.
+**Conflict:** I on both requirements lists the other REQ ID (`, ` between several). **Resolved conflict:** when the client settles it, clear the other ID from I on both requirements, and say so at the gate. A conflict with a statement that isn't a requirement yet: add that statement as a new `Draft` requirement first, then link the two.
 
 ## History tab (A to H)
 
