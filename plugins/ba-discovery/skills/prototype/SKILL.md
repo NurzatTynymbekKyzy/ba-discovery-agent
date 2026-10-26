@@ -45,7 +45,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `create_file`;
 
 1. **Find the workspace.** Search Drive for `discovery.yaml` (`title = 'discovery.yaml'`, `excludeContentSnippets: true`) and read it with `read_file_content`; it gives the ids of `requirements_register` and `prototype`. The reader may escape underscores as `\_`: remove the backslashes from ids. Several results: read each one's `project` line and ask which project, unless the BA named it. No `prototype` key (older workspace): the folder `07 Prototype` is created at save time, inside the Discovery folder. None, or no Drive tools: work on an attached register and say at the gate that nothing can be saved yet.
 
-2. **Read the register and decide the mode.** `get_values` on `Requirements!A:K`; drop `Rejected` rows. List `07 Prototype` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`). No `Screen spec` Doc: **new** (v1). Otherwise **update**: read the newest spec with `read_file_content`.
+2. **Read the register and decide the mode.** `get_values` on `Requirements!A:K`; drop `Rejected` rows. List `07 Prototype` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back, since Drive returns folder listings in pages). No `Screen spec` Doc: **new** (v1). Otherwise **update**: read the newest spec with `read_file_content`.
 
 3. **Propose (first gate).** Read `references/prototype-format.md` once, now.
    - **New:** group the requirements into user flows and screens and show the screen map. Every screen lists its REQ IDs; elements no requirement asks for are listed as assumptions; business and non-functional requirements without a screen are listed as such.
