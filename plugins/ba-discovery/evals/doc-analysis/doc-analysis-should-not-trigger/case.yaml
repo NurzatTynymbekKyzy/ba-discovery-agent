@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: doc-analysis-should-not-trigger
+expected_outcome: |
+  A meeting transcript summary request belongs to workshop-summary; doc-analysis
+  must not fire.
+context:
+  scaffold_script: place-files.sh

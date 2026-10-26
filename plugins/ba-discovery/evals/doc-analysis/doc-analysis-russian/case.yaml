@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: doc-analysis-russian
+expected_outcome: |
+  The analysis, questions and requirements are in Russian. Four draft requirements
+  from §4.1-4.4 with section sources and no priorities (the document states none).
+  P1 questions cover the missing success metric or target onboarding time and the
+  scope question about sole proprietors (ИП "возможно позже"). Non-functional
+  requirements are missing and become a question, not invented requirements.
+context:
+  scaffold_script: place-files.sh
