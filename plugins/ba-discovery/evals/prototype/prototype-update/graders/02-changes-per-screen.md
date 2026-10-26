@@ -8,5 +8,6 @@ Compared with Screen spec v1 (register read on 2026-10-26), the register now has
 
 PASS if the response proposes, per screen with reasons: removing the "Get the app" banner from Class list; on My bookings the 1-hour window, the 1-hour no-show note and a Cancel button per row; a new screen (or element) for the waitlist offer with the 30-minute rule.
 PASS if Booking confirmed and Attendees are reported unchanged.
-FAIL if any of those changes is missing, if larger class names are proposed as a wireframe change, or if a change appears that neither the register nor the feedback supports.
+Extra elements needed to reach a new requirement (for example where the member accepts the waitlist offer) are fine when they are marked as assumptions.
+FAIL if any of those changes is missing, if larger class names are proposed as a wireframe change, or if an unmarked change appears that neither the register nor the feedback supports.
 The response may be in any language. Formatting does not affect the verdict.
