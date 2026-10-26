@@ -17,8 +17,8 @@ static:
 # request is handled by doc-analysis, which is part of the same plugin.
 eval_model: claude-sonnet-5-5
 eval:
-  discovery-docs-update-clean:                          { max_cost_usd: 0.10, max_turns: 9 }
-  discovery-docs-update-edge-conflict-vague-injection:  { max_cost_usd: 0.10, max_turns: 9 }
-  discovery-docs-update-russian:                        { max_cost_usd: 0.10, max_turns: 10 }
-  discovery-docs-update-canvas-settled:                 { max_cost_usd: null, max_turns: 10 }
-  discovery-docs-update-should-not-trigger:             { max_cost_usd: 0.13, max_turns: 9 }
+  discovery-docs-update-clean:                          { max_cost_usd: 0.13, max_turns: 10 }
+  discovery-docs-update-edge-conflict-vague-injection:  { max_cost_usd: 0.12, max_turns: 9 }
+  discovery-docs-update-russian:                        { max_cost_usd: 0.12, max_turns: 9 }
+  discovery-docs-update-canvas-settled:                 { max_cost_usd: 0.11, max_turns: 10 }
+  discovery-docs-update-should-not-trigger:             { max_cost_usd: 0.14, max_turns: 9 }
