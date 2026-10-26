@@ -40,6 +40,7 @@ The screen manifest, the link map between screens, design tokens shared by every
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
+| 2026-10-26 | 0.7.0 | Nurzat + Claude | Pass | Test Project 3: screen map approved, Wireframe v1 built (6 screens + coverage, no dead links, phone width OK), published as a page, saved with Screen spec v1 to a new `07 Prototype` |
 
 ## Changelog
 

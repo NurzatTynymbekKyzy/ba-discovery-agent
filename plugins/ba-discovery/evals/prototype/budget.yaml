@@ -9,7 +9,7 @@ static:
   skill_md: 2500            # loaded when the skill runs
   references:
     references/prototype-format.md: 1200   # read once, at the first gate
-    references/wireframe-kit.html: 1420    # read once, only after the screen map is approved
+    references/wireframe-kit.html: 1850    # read once; includes dark theme and phone layout, only after the screen map is approved
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
 # Turns and cost: set about 20% above the means of the first 3-run suite.

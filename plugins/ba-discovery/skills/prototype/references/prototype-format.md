@@ -31,13 +31,13 @@ Not shown as a screen
 
 Copy `wireframe-kit.html` unchanged and fill its three markers:
 
-- **title:** `{project} — Wireframe v{N}`.
-- **sidebar:** `<aside class="sidebar">` with `<div class="sidebar-logo">{project}</div>`, one `<a class="nav-item" data-go="{id}">{name}</a>` per main screen (not per state), and `<div class="sidebar-footer">Wireframe v{N} · {YYYY-MM-DD}</div>`.
+- **title:** `{project} Wireframe` (the same name for every version; the version is in the sidebar footer).
+- **sidebar:** `<aside class="sidebar">` with `<div class="sidebar-logo">{project}</div>`, one `<a class="nav-item" href="#{id}" data-go="{id}">{name}</a>` per main screen (not per state), and `<div class="sidebar-footer">Wireframe v{N} · {YYYY-MM-DD}</div>`.
 - **screens:** one `<section class="screen" id="{id}">` per row of the screen map, ids exactly as in the map, then the coverage screen.
 
-Inside screens use only the kit's classes: `page-header`, `card`, `grid`, `stat`, `label`, `table`, `btn`, `btn secondary`, `field`, `badge ok|warn|bad`, `notice`, `placeholder`. No other styles, scripts, images or links to external files.
+Inside screens use only the kit's classes: `page-header`, `card`, `grid`, `stat`, `label`, `table` inside `<div class="table-wrap">`, `btn`, `btn secondary`, `field`, `badge ok|warn|bad`, `notice`, `placeholder`. No other styles, colours, scripts, images or links to external files; the kit already works in light and dark themes and at phone width.
 
-- **Navigation:** every button, link or row that leads somewhere has `data-go="{target id}"`; nothing is a dead link.
+- **Navigation:** every button, link or row that leads somewhere has `data-go="{target id}"` (on links also `href="#{target id}"`); nothing is a dead link. Forms don't submit anywhere: a submit button carries `data-go` to the next screen.
 - **Traceability:** after each element that serves a requirement, `<span class="req-tag">REQ-005</span>` (several IDs separated by `, `). The toolbar's "Show requirements" toggle reveals them.
 - **Assumptions:** add `class="assumption"` and `<span class="req-tag">assumption</span>`.
 - **Sample data:** realistic names, dates and amounts that fit the client's domain; 3 to 6 rows per list.
