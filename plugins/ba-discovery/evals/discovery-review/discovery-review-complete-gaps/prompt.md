@@ -1,7 +1,7 @@
 ---
 description: Final completeness check with gaps in every area except "prototype exists"; includes a rejected User requirement, a closed High risk and a P3 question that are not gaps
 tags: [discovery-review, messy]
-max_turns: 10
+max_turns: 14
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---

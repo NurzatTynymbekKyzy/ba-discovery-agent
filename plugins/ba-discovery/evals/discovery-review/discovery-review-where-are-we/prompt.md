@@ -1,7 +1,7 @@
 ---
 description: Status mid-Discovery from exports; one meeting not yet in the docs and the prototype is behind a requirement change
 tags: [discovery-review, clean]
-max_turns: 10
+max_turns: 14
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---

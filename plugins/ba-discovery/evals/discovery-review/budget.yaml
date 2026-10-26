@@ -14,7 +14,7 @@ static:
 # Turns and cost: set about 20% above the means of the first 3-run suite.
 eval_model: claude-sonnet-5-5
 eval:
-  discovery-review-where-are-we:          { max_cost_usd: null, max_turns: 10 }
-  discovery-review-complete-gaps:         { max_cost_usd: null, max_turns: 10 }
-  discovery-review-complete-no-prototype: { max_cost_usd: null, max_turns: 10 }
-  discovery-review-should-not-trigger:    { max_cost_usd: null, max_turns: 9 }
+  discovery-review-where-are-we:          { max_cost_usd: 0.10, max_turns: 12 }
+  discovery-review-complete-gaps:         { max_cost_usd: 0.10, max_turns: 13 }
+  discovery-review-complete-no-prototype: { max_cost_usd: 0.10, max_turns: 13 }
+  discovery-review-should-not-trigger:    { max_cost_usd: 0.10, max_turns: 9 }
