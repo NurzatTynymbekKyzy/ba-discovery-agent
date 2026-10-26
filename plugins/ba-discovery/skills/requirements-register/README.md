@@ -47,6 +47,7 @@ Their Requirements Register has no `History` or `Updates` tab. Add two tabs with
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
+| 2026-10-26 | 0.5.0 | @NurzatTynymbekKyzy | Pass after fixes | Test Project 3, register filled by `doc-analysis` (10 requirements, older template: History and Updates tabs added as this README describes); synthetic follow-up transcript named by the BA: 2 changed (versions 2, old text in History), 2 confirmed, 1 new, 1 conflict resolved and cleared on all three requirements, the postponed idea and a restatement not added; approved with "yes"; rows re-checked before updating, everything read back. Fixes found: Drive listings return only the first file by default (now up to 100); a just-uploaded file reads empty for about a minute (now reported as "ask again in a minute"); resolved conflicts need clearing (now in the format). |
 
 ## Changelog
 

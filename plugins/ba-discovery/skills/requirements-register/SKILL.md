@@ -53,8 +53,8 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
 5. **Find the changes.** Read `references/register-format.md` once, now. Then compare what was said with the register:
    - **New:** a need the client states that no requirement covers. Same meaning as an existing requirement is not new, even in other words.
-   - **Changed:** the client restates an existing requirement differently (a number, a rule, the scope of it).
-   - **Confirmed:** the client explicitly agrees to a `Draft` or `Changed` requirement ("yes, that's right", "agreed"). Silence or "sounds interesting" is not confirmation.
+   - **Changed:** the client restates an existing requirement's own content differently (a number, a rule, the scope of it). A rule that adds to a requirement without contradicting it (a time limit, an extra condition) is a **new** requirement, so the existing one can still be confirmed as it stands.
+   - **Confirmed:** the client explicitly agrees to a `Draft` or `Changed` requirement ("yes, that's right", "agreed", "that stays as it is"). Silence or "sounds good, let's see" is not confirmation.
    - **Rejected:** the client explicitly drops it.
    - **Conflict:** two participants want incompatible things and the meeting doesn't settle it, or a statement contradicts a `Confirmed` requirement. Never pick a side: flag both.
    - A proposal or idea nobody agreed to is not a requirement. Every item carries the speaker, the timestamp (or a short quote) and the transcript.
