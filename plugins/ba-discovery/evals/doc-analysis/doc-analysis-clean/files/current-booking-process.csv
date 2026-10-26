@@ -1,0 +1,6 @@
+Step,Who,Channel,Average time,Notes
+Member asks for a place,Member,Phone or front desk,3 min,Synthetic data for evals
+Staff check capacity,Front-desk staff,ClubDesk,1 min,Capacity per class set by each club
+Staff record booking,Front-desk staff,ClubDesk,1 min,
+Member cancels,Member,Phone,2 min,Many members don't cancel at all
+Trainer gets attendee list,Front-desk staff,Printed sheet,5 min,Printed 30 minutes before class

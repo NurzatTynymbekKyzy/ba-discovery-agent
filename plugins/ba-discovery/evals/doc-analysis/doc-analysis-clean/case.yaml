@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: doc-analysis-clean
+expected_outcome: |
+  Six draft requirements from BRD §4.1-4.6, each with its section as source;
+  priorities exactly as stated (4.1 Must, 4.2 Should, 4.5 Could, the rest empty).
+  Questions ordered P1 to P4, with P1 covering the missing no-show target and
+  success metrics and which clubs are in the first release. Canvas entries for
+  problem, goals, users, scope out (payments), current systems (ClubDesk). Nothing
+  invented, nothing claimed saved without connectors.
+context:
+  scaffold_script: place-files.sh
