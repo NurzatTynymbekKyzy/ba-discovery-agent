@@ -93,7 +93,7 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
    - how many items were created (and, on a re-run, how many already existed);
    - anything missing, with the reason, and that running the setup again will complete it;
    - any Sheet that got only its column headers, and why;
-   - the next step: "Put the client's materials into `02 Client Inputs` and meeting transcripts into `03 Meetings/Transcripts`."
+   - the next step: "Put the client's materials into `02 Client Inputs` and meeting transcripts into `03 Meetings/Transcripts`. Then ask me to analyze the documents."
 
 ## Gate
 

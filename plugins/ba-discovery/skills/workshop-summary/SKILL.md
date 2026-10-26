@@ -72,7 +72,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
    If a call fails, retry it once. If it fails again, report what was saved and what wasn't.
 
-8. **Report** in a few lines: the link to the summary Doc, the link to the Gmail draft, and that the BA sends the email after a final look. The draft's `viewUrl` names the Gmail account (`authuser=`); if it differs from the Drive files' `owner`, say so: the draft is in that other mailbox, and Gmail should be reconnected with the same account as Drive. If the email links to the summary, add: "Participants can open the summary only if they have access to the Discovery folder."
+8. **Report** in a few lines: the link to the summary Doc, the link to the Gmail draft, that the BA sends the email after a final look, and the next step: "Shall I update the docs (requirements, decisions, risks, questions, canvas) from this meeting?" The draft's `viewUrl` names the Gmail account (`authuser=`); if it differs from the Drive files' `owner`, say so: the draft is in that other mailbox, and Gmail should be reconnected with the same account as Drive. If the email links to the summary, add: "Participants can open the summary only if they have access to the Discovery folder."
 
 ## Gate
 

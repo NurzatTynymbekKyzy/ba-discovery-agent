@@ -23,7 +23,7 @@ Full steps, Google connectors and a first check: [Install the plugin](../../READ
 | `doc-analysis` | Analyzes the client's documents: analysis Doc, prioritized questions, draft requirements, first canvas entries | In progress |
 | `discovery-docs-update` | After a meeting, updates requirements (with history), decisions, risks, open questions and the canvas, in one review | In progress |
 | `prototype` | Builds a clickable prototype once there is enough context, and updates it after client feedback | Planned |
-| `discovery-review` | At the end, checks every document for gaps (empty sections, unconfirmed requirements, open P1 questions) | Planned |
+| `discovery-review` | "Where are we?" during the Discovery (status and the next step) and "Is it complete?" at the end (gap list) | Planned |
 
 A skill moves to **Ready** only when it meets the Definition of Done in `docs/SKILL-CONTRACT.md` at the repo root.
 

@@ -71,7 +71,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
    Independent writes can run in parallel. If a call fails, retry it once; if it fails again, stop and report what was applied and what wasn't.
 
-8. **Verify and report.** Read back the changed ranges. Report the counts per document, anything not applied, and: "Open P1 questions and conflicts are the agenda for the next session."
+8. **Verify and report.** Read back the changed ranges. Report the counts per document, anything not applied, and the next step: "Open P1 questions and conflicts are the agenda for the next session. When there is enough context, ask me for a prototype."
 
 ## Gate
 
