@@ -1,0 +1,57 @@
+<!-- Wireframe kit for the prototype skill. Copy everything from <!DOCTYPE html> to </html> unchanged; fill only the three FILL markers. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><!-- FILL:title -->Project — Wireframe vN</title>
+<style>
+:root{--bg:#f4f4f2;--surface:#fff;--line:#d6d6d2;--ink:#2b2b29;--muted:#77776f;--fill:#ececea;--accent:#4a4a46;
+--ok:#e3efe3;--warn:#f6ecd6;--bad:#f6e1df;--req:#fff4bf;--req-ink:#6b5a00;
+--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s6:24px;--s8:32px;--r:6px;--font:'IBM Plex Sans',system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 var(--font);background:var(--bg);color:var(--ink)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:220px;background:var(--surface);border-right:1px solid var(--line);padding:var(--s4);display:flex;flex-direction:column;gap:var(--s2)}
+.sidebar-logo{font-weight:600;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
+.nav-item{display:block;padding:var(--s2) var(--s3);border-radius:var(--r);color:var(--ink);text-decoration:none;cursor:pointer}
+.nav-item.active,.nav-item:hover{background:var(--fill)}
+.sidebar-footer{margin-top:auto;font-size:12px;color:var(--muted)}
+main{flex:1;padding:var(--s8);max-width:1100px}
+.screen{display:none}.screen.active{display:block}
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s6)}
+h1{font-size:22px;margin:0}h2{font-size:16px;margin:0 0 var(--s3)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);margin-bottom:var(--s4)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s4)}
+.stat{font-size:24px;font-weight:600}.label{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--surface)}th,td{text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line)}th{background:var(--fill);font-weight:600}
+.btn{display:inline-block;padding:var(--s2) var(--s4);border-radius:var(--r);border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font:inherit}
+.btn.secondary{background:var(--surface);color:var(--accent)}
+.field{display:flex;flex-direction:column;gap:var(--s1);margin-bottom:var(--s3)}
+input,select,textarea{font:inherit;padding:var(--s2);border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.badge{display:inline-block;padding:2px var(--s2);border-radius:99px;font-size:12px;background:var(--fill)}
+.badge.ok{background:var(--ok)}.badge.warn{background:var(--warn)}.badge.bad{background:var(--bad)}
+.notice{padding:var(--s3);border-radius:var(--r);background:var(--ok);margin-bottom:var(--s4)}
+.placeholder{background:var(--fill);border:1px dashed var(--line);border-radius:var(--r);padding:var(--s6);text-align:center;color:var(--muted)}
+.assumption{outline:2px dashed #c9a400;outline-offset:2px}
+.req-tag{display:none;margin-left:var(--s2);padding:1px 6px;border-radius:4px;background:var(--req);color:var(--req-ink);font-size:11px;font-weight:600;vertical-align:middle}
+body.show-req .req-tag{display:inline-block}
+.toolbar{position:fixed;right:16px;bottom:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--s2) var(--s3);font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+</style>
+</head>
+<body>
+<div class="app">
+<!-- FILL:sidebar — <aside class="sidebar"> with .sidebar-logo, one <a class="nav-item" data-go="screen-id"> per main screen, .sidebar-footer "Wireframe vN · date" -->
+<main>
+<!-- FILL:screens — one <section class="screen" id="screen-id"> per screen in the screen map, then <section class="screen" id="coverage"> -->
+</main>
+</div>
+<div class="toolbar"><label><input type="checkbox" id="req-toggle"> Show requirements</label> · <a class="nav-item" style="display:inline;padding:0" data-go="coverage">Coverage</a></div>
+<script>
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));
+document.querySelectorAll('.sidebar .nav-item').forEach(a=>a.classList.toggle('active',a.dataset.go===id));location.hash=id;window.scrollTo(0,0)}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go)}});
+document.getElementById('req-toggle').addEventListener('change',e=>document.body.classList.toggle('show-req',e.target.checked));
+const h=(location.hash||'').slice(1);go(document.getElementById(h)?h:document.querySelector('.screen').id);
+</script>
+</body>
+</html>

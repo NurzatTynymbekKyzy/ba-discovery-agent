@@ -2,6 +2,10 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
+## Unreleased (0.7.0)
+
+- New skill `prototype`: a clickable wireframe from the Requirements Register (all but Rejected), every element traced to its REQ ID, a coverage screen, and a screen spec Doc for designers; screen map approved before building; update mode after feedback; versions kept in a new `07 Prototype` folder
+
 ## Unreleased (0.5.0)
 
 - New skill `discovery-docs-update`: after a meeting, one review updates all five documents: requirements (new, changed with History, confirmed, rejected, conflicts), Decision Log, RAID log, Open Questions Log (answers and new questions) and canvas. Built first as `requirements-register` (requirements only), then widened

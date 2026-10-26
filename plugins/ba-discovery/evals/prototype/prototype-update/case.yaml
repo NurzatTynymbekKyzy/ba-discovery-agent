@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: prototype-update
+expected_outcome: |
+  The skill proposes changes per screen and stops before building:
+  Class list: remove the "Get the app" banner (REQ-004 now Rejected).
+  My bookings: cancellation window 2 hours -> 1 hour (REQ-005 v2) and the no-show
+  note to 1 hour (REQ-009 v2); a Cancel button on each row instead of the footer
+  link (Sara Lind 00:02:30, Omar Haddad agreed).
+  New screen: Waitlist offer, accept a freed place within 30 minutes (REQ-011).
+  Unchanged: Booking confirmed, Attendees; class name size is for the designers,
+  not a wireframe change.
+context:
+  scaffold_script: place-files.sh

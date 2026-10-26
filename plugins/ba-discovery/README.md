@@ -22,7 +22,7 @@ Full steps, Google connectors and a first check: [Install the plugin](../../READ
 | `workshop-summary` | Turns a transcript into a summary Doc, a line in the Meeting Summaries log and a follow-up email draft | In progress: evals passing, tested on Drive |
 | `doc-analysis` | Analyzes the client's documents: analysis Doc, prioritized questions, draft requirements, first canvas entries | In progress |
 | `discovery-docs-update` | After a meeting, updates requirements (with history), decisions, risks, open questions and the canvas, in one review | In progress |
-| `prototype` | Builds a clickable prototype once there is enough context, and updates it after client feedback | Planned |
+| `prototype` | Clickable wireframe traced to the requirements, plus a screen spec Doc for designers; updated after client feedback | In progress |
 | `discovery-review` | "Where are we?" during the Discovery (status and the next step) and "Is it complete?" at the end (gap list) | Planned |
 
 A skill moves to **Ready** only when it meets the Definition of Done in `docs/SKILL-CONTRACT.md` at the repo root.

@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: prototype-screen-map
+expected_outcome: |
+  The skill shows a screen map first and asks for approval, without building HTML.
+  Screens cover member booking and cancellation (REQ-005, REQ-009), waitlist and
+  accepting a freed place (REQ-006, REQ-011), reminder (REQ-007) and the trainer's
+  attendee list (REQ-008), each with REQ IDs. REQ-004 (Rejected) is not used.
+  Business and non-functional requirements (REQ-001, 002, 003, 012, 013) are listed
+  as not shown as a screen, or tied to a screen only where clear. Elements not in
+  the register are listed as assumptions.
+context:
+  scaffold_script: place-files.sh

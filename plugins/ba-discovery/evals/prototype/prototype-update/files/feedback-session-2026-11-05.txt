@@ -1,0 +1,8 @@
+Synthetic transcript for evals. Company, people and figures are invented.
+Meridian Fitness, wireframe feedback. Thursday, November 5, 2026.
+
+[00:01:10] Aida Bekova: This is the wireframe from last week. What do you think?
+[00:02:30] Sara Lind: The booking flow is clear. But on My bookings the cancel link at the bottom is too hidden. Put a Cancel button on each booking row.
+[00:03:05] Omar Haddad: Agreed, per row is better.
+[00:04:20] Sara Lind: The class list looks good. Maybe the class names could be bigger, but that's for the designers.
+[00:05:40] Aida Bekova: Thanks, we'll update it.

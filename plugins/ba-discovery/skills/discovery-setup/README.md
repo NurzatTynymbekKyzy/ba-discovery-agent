@@ -42,6 +42,7 @@ Atlas — Discovery/
 │   ├── Requirements Register      (Sheet)
 │   ├── Open Questions Log         (Sheet)
 │   └── Constraints                (Doc)
+├── 07 Prototype/                 wireframe versions and the screen spec
 └── _agent/
     └── discovery.yaml             record of the workspace for the other skills
 ```

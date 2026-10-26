@@ -60,4 +60,6 @@ items:
       - { key: open_questions_log,    type: sheet, name: "Open Questions Log",    template: open-questions-log }
       - { key: constraints,           type: doc,   name: "Constraints",           template: constraints }
 
+  - { key: prototype,             type: folder, name: "07 Prototype" }
+
   - { key: agent,                 type: folder, name: "_agent" }
