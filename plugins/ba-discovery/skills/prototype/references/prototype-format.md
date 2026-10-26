@@ -39,7 +39,7 @@ Inside screens use only the kit's classes: `page-header`, `card`, `grid`, `stat`
 
 - **Navigation:** every button, link or row that leads somewhere has `data-go="{target id}"` (on links also `href="#{target id}"`); nothing is a dead link. Forms don't submit anywhere: a submit button carries `data-go` to the next screen.
 - **Traceability:** after each element that serves a requirement, `<span class="req-tag">REQ-005</span>` (several IDs separated by `, `). The toolbar's "Show requirements" toggle reveals them.
-- **Assumptions:** add `class="assumption"` and `<span class="req-tag">assumption</span>`. Any button, filter or state the approved map doesn't name is marked this way, never added silently.
+- **Assumptions:** add `class="assumption"` and `<span class="req-tag">assumption</span>`. Mark so any button, filter or state the map doesn't name.
 - **Sample data:** realistic names, dates and amounts that fit the client's domain; 3 to 6 rows per list.
 - **Coverage screen** (`id="coverage"`, last): a table `Requirement | Screen(s)`, then "Not shown as a screen" and "Assumptions" as in the map.
 
