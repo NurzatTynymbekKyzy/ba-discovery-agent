@@ -7,7 +7,7 @@
 ### 1. Class list (class-list)
 | Element | Behaviour | Requirements |
 |---|---|---|
-| Class table with free places | | REQ-003, REQ-005, REQ-006 |
+| Class table with free places | | REQ-005, REQ-006 |
 ### 2. My bookings (my-bookings)
 | Cancel per row | until 1 hour before; later counts as no-show | REQ-005, REQ-009 |
 ### 3. Waitlist offer (waitlist-offer)
@@ -15,7 +15,7 @@
 ### 4. Booking confirmed (booking-confirmed)
 | Reminder note | 24 hours before | REQ-007 |
 ### 5. Attendees (attendees)
-| Booked members | | REQ-004, REQ-008 |
+| Booked members | | REQ-008 |
 
 ## Not shown as a screen
-- REQ-001, REQ-002 (Business), REQ-011 (Non-functional)
+- REQ-001, REQ-002 (Business), REQ-012 (Non-functional)

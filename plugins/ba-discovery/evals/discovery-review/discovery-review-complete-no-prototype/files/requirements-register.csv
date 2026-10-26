@@ -7,6 +7,6 @@ REQ-005,Functional,Members can book a class online and cancel it up to 1 hour be
 REQ-006,Functional,"When a class is full, members can join a waitlist.",,Must,BRD §4.2,Sara Lind,Confirmed,,1,2026-09-28
 REQ-007,Functional,Members receive a reminder 24 hours before the class.,,Should,BRD §4.3,Sara Lind,Draft,,1,2026-09-28
 REQ-008,Functional,Trainers see the list of booked members for their class.,,Should,BRD §4.4,Sara Lind,Confirmed,,1,2026-09-28
-REQ-009,Functional,Cancellations later than 1 hour before the class count as a no-show and block booking for 7 days.,Block added in the feedback follow-up.,Must,Follow-up call 2026-10-15,Sara Lind,Confirmed,,2,2026-10-15
+REQ-009,Functional,Cancellations later than 1 hour before the class count as a no-show and block booking for 7 days.,Block added in the feedback follow-up.,Must,Email from Sara Lind 2026-10-15,Sara Lind,Confirmed,,2,2026-10-15
 REQ-010,Functional,A member on the waitlist must accept a freed place within 30 minutes.,,Must,Scope session 2026-10-06,Tom Reyes,Confirmed,,1,2026-10-06
 REQ-011,Non-functional,The booking service is available 99.5% of the time during club opening hours.,,Should,BRD §5,Sara Lind,Draft,,1,2026-09-28

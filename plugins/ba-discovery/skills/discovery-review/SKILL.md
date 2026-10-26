@@ -67,7 +67,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`; Sheets `get_va
    Open questions: {n} P1, {n} P2
    Risks: {n} High open
    Prototype: Wireframe v{N} from {date}; {up to date | {n} requirements changed since}
-   Next: {one step, naming the skill and the input}
+   Next: {exactly one step, naming the skill and the input; no "then"}
    ```
 
    The next step, in this order: an unprocessed meeting → `discovery-docs-update` with its transcript; no analysis and documents in Client Inputs → `doc-analysis`; P1 questions open → ask them in the next meeting; enough functional requirements and no prototype, or a stale one → `prototype`; otherwise → "ask me 'Is it complete?'". Stop.
