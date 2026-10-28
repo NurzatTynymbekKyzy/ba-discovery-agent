@@ -33,7 +33,7 @@ Give a BA who starts a new Discovery a ready workspace on Google Drive in one st
 
 On the BA's Google Drive, inside the chosen location:
 
-- the folder `{project} — Discovery` with exactly the folders, Docs and Sheets listed in `references/structure.yaml`, each Doc and Sheet built from its template in `references/templates.json` (headings and guidance for Docs; tabs, column headers, widths, frozen header row and dropdowns for Sheets);
+- the folder `{project} — Discovery` with exactly the folders, Docs and Sheets listed in `references/structure.yaml`, each Doc and Sheet a copy of its master template on Drive (`references/master-templates.yaml`), with the same headings, tabs, columns and dropdowns;
 - `_agent/discovery.yaml`, a record of every created item and its Drive id, in the format in `references/discovery-record.md`.
 
 ## Procedure
@@ -44,7 +44,7 @@ On the BA's Google Drive, inside the chosen location:
 
 Steps 3 to 5 only read. Do all of them before asking for approval, so the BA approves one plan that is known to be possible, and approves only once.
 
-3. **Check that Google Drive is reachable.** Look for the Google Drive tools (`create_file`, `search_files`). Some environments load tools on demand: if you have a tool search, search for "Google Drive" before deciding they are missing.
+3. **Check that Google Drive is reachable.** Look for the Google Drive tools (`create_file`, `copy_file`, `search_files`). Some environments load tools on demand: if you have a tool search, search for "Google Drive" before deciding they are missing.
 
    If the Drive tools are not available, reply with:
    - the plan (location as the BA named it, or the root of My Drive, and the full tree as in step 6), so the BA sees what they will get;
@@ -53,7 +53,6 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
 
    Then stop. Do not describe anything as created.
 
-   Also look for the Google Sheets tool `update_spreadsheet` (search for "Google Sheets" if tools load on demand). With it, Sheets get their full template. Without it, Sheets are created with their column headers only; say this in the plan in step 6 so the BA knows before approving.
 
 4. **Find the location.** If the BA named a location, find it with `search_files` (`title = '<name>' and mimeType = 'application/vnd.google-apps.folder'`). One match: use it. Several: list them with their parent folder or owner and ask which one; stop until the BA answers. None: say the folder wasn't found, ask for another folder or offer the root of My Drive; stop until the BA answers. Use `'root'` for My Drive.
 
@@ -66,25 +65,22 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
    - the location (the folder found in step 4, or "the root of your My Drive");
    - for a new workspace: the full tree, as a code block, with `{project}` replaced and each file marked `(Doc)` or `(Sheet)`;
    - for an existing workspace: what already exists and the list of missing items that will be added; if `_agent/discovery.yaml` exists, that the old record will be moved to Drive trash and replaced by an updated one;
-   - one line: "Docs and Sheets are created from the plugin's templates, without any client content. Nothing is shared, moved or deleted."
-   - if the Google Sheets tool is missing: "Google Sheets isn't connected, so Sheets will get their column headers but no dropdowns or formatting."
+   - one line: "Docs and Sheets are copies of the plugin's master templates, without any client content. Nothing is shared, moved or deleted."
 
    Then ask: "Shall I create it?" Stop and wait. Continue only on a clear yes. If the BA asks for a different structure, explain that this skill creates the standard structure so that every Discovery and every skill finds things in the same place, and that they can add their own folders afterwards.
 
-7. **Create the items.** First read `references/templates.json`, once: it holds every template, keyed by the `template` name in the structure. Don't read it earlier; until the BA approves, the templates aren't needed.
+7. **Create the items by copying, not by writing them.** Read `references/master-templates.yaml` once: it maps each `template` name in the structure to a master file on Drive. Don't read `references/templates.json`; it is only the fallback below.
 
-   Create the root folder first (if needed), then the items in the order they appear in the structure, each folder before its contents. Every call uses `create_file` with `title` = the item's name and `parentId` = the id of its folder. Then, by type:
+   Create the root folder first (if needed), then the items in the order of the structure, each folder before its contents:
 
-   - **folder**: `contentMimeType: application/vnd.google-apps.folder`.
-   - **doc**: pass the template's `html` as `textContent`, with `contentMimeType: text/html`. Drive converts it into a Google Doc with the template's headings, guidance and tables.
-   - **sheet**, with the Google Sheets tool: create it with `contentMimeType: application/vnd.google-apps.spreadsheet` and no content; then call `update_spreadsheet` with the new file's id and the template's `requests` array, exactly as stored. The requests assume the new spreadsheet's first tab has id 0, which is how Drive creates an empty spreadsheet.
-   - **sheet**, without the Google Sheets tool, or if `update_spreadsheet` fails twice for this file: create it with `contentMimeType: text/csv` and the template's `fallback_csv` as `textContent`, so it at least has its column headers. Note the file for the report.
+   - **folder**: `create_file` with `title` = the item's name, `parentId` = its folder, `contentMimeType: application/vnd.google-apps.folder`.
+   - **doc** or **sheet**: `copy_file` with `fileId` = the master id for its `template`, `parentId` = its folder, `title` = the item's name. The copy already has the template's headings, tabs, columns and dropdowns; change nothing in it.
 
-   Make independent calls in parallel where you can: the folders of one level, then the files inside them.
+   Copies are Drive calls, not Sheets calls, so they don't use the Google Sheets quota. Make independent calls in parallel: the folders of one level, then the copies inside them.
 
-   Pass template content unchanged. The templates are reviewed by the community; an improvised edit here would make this BA's file differ from everyone else's without anyone noticing.
+   **Fallback, only for an item whose copy failed twice** (for example, the master folder isn't shared with this account): read `references/templates.json` once and build that item from its template. A doc: `create_file` with the template's `html` as `textContent` and `contentMimeType: text/html`. A sheet: `create_file` with `contentMimeType: application/vnd.google-apps.spreadsheet`, then `update_spreadsheet` with the template's `requests` exactly as stored; if that fails twice, `create_file` with `contentMimeType: text/csv` and the template's `fallback_csv`. Name every item built this way in the report.
 
-   Keep the id Drive returns for every item. If a create call fails, retry it once. If it fails again, stop creating and go to step 9.
+   Keep the id Drive returns for every item. If a folder can't be created after a retry, stop creating and go to step 9.
 
 8. **Write the record.** Create `_agent/discovery.yaml` as described in `references/discovery-record.md`, using only ids returned by Drive or found in step 5.
 
@@ -120,7 +116,7 @@ Steps 3 to 5 only read. Do all of them before asking for approval, so the BA app
 | A create call fails twice | Stops; reports what was created and what is missing; says that running setup again completes it |
 | BA asks for a custom structure | Explains the standard structure is fixed; offers to create it, after which the BA can add folders |
 | BA does not approve | Creates nothing; offers to adjust the location or name |
-| Google Sheets tool missing, or applying a Sheet template fails twice | Creates that Sheet with column headers only, from `fallback_csv`; names it in the report |
+| Master template can't be copied (not shared with this account, or deleted) | Builds that item from `references/templates.json` instead; names it in the report and says the master folder needs sharing |
 
 ## Quality criteria
 

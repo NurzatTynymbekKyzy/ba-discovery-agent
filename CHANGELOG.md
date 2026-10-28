@@ -2,6 +2,12 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
+## Unreleased (0.9.0)
+
+- `discovery-setup` copies master template files from a shared Drive folder (`references/master-templates.yaml`) instead of reading `templates.json` and rebuilding every Doc and Sheet; `templates.json` is now only the fallback. Live run: 26 Drive calls instead of 37, no Google Sheets writes (was 10), no template text through the model (was about 9.5k tokens read and re-written)
+- README template lists `07 Prototype`
+- Removed `discovery-review`: its status and checks are mechanical counting, which belongs in code rather than a skill (independent reviews by Claude and Gemini, 2026-10-28)
+
 ## Unreleased (0.8.0)
 
 - New skill `discovery-review`, read-only, answers in the chat: "Where are we?" (stage, meetings not yet in the docs, counts, prototype freshness, one next step) and "Is it complete?" (a five-check list: context canvas, Business and User requirements, prototype exists and is current, open P1/P2 questions and High risks without owner)

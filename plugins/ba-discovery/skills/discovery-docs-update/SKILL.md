@@ -19,7 +19,6 @@ After every client session five documents need updating: requirements change, de
 
 - Summary and follow-up email of a meeting: `workshop-summary` (run it first; this skill uses its summary as a cross-check)
 - First analysis of client documents (BRD, decks, spreadsheets): `doc-analysis`
-- Checking at the end whether the Discovery is complete: `discovery-review`
 
 ## Inputs
 
