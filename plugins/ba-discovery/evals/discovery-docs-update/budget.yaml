@@ -7,7 +7,7 @@
 # from requirements only to all five documents.
 static:
   description: 140          # in context in every chat, triggered or not
-  skill_md: 3000            # loaded when the skill runs
+  skill_md: 3300            # loaded when the skill runs; raised from 3000 (2026-10-28) for the Sheets one-at-a-time rule and the per-document gate
   references:
     references/docs-format.md: 1800   # read once, when proposing changes
 

@@ -6,6 +6,9 @@ All notable changes to the `ba-discovery` plugin. Versions follow `version` in `
 
 - `discovery-setup` copies master template files from a shared Drive folder (`references/master-templates.yaml`) instead of reading `templates.json` and rebuilding every Doc and Sheet; `templates.json` is now only the fallback. Live run: 26 Drive calls instead of 37, no Google Sheets writes (was 10), no template text through the model (was about 9.5k tokens read and re-written)
 - README template lists `07 Prototype`
+- `doc-analysis` and `discovery-docs-update` make Google Sheets calls one at a time and write each tab in as few calls as possible; on `Quota exceeded` they report what is saved and ask the BA to type "continue", instead of retrying into the limit. Live re-test: 0 quota errors (was 5)
+- `discovery-docs-update` processes one meeting per run by default (up to 3 when the BA names them) and ends its review with a per-document summary, so the BA can approve document by document
+- Master Sheets show dates as YYYY-MM-DD in date columns
 - Removed `discovery-review`: its status and checks are mechanical counting, which belongs in code rather than a skill (independent reviews by Claude and Gemini, 2026-10-28)
 
 ## Unreleased (0.8.0)

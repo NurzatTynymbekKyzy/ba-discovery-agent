@@ -25,7 +25,7 @@ Every item carries the speaker, the timestamp and the transcript. If you made a 
    - "Update the requirements and decisions from the last session"
 3. Review the changes, grouped by document. Approve all ("yes"), some ("yes, but skip the risks"), or correct them in plain words.
 
-Without a named transcript, it takes the transcripts not done yet, oldest first, up to 3 per run.
+Without a named transcript, it takes the oldest meeting not done yet: one meeting per run, so the review stays short. Name up to 3 transcripts to process them together. At the end you approve document by document: "all", or for example "requirements and decisions".
 
 ## What it won't do
 

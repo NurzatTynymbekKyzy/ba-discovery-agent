@@ -6,7 +6,7 @@
 # Set about 10% above the sizes measured on 2026-10-26.
 static:
   description: 150          # in context in every chat, triggered or not
-  skill_md: 3150            # loaded when the skill runs
+  skill_md: 3250            # loaded when the skill runs; raised from 3150 (2026-10-28) for the Sheets one-at-a-time rule
   references:
     references/analysis-format.md: 1300   # read once, when writing the analysis
 
