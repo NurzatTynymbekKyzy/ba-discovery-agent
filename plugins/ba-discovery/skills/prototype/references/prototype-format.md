@@ -12,8 +12,8 @@ Flow: {name}  ({role})
   1. {Screen}  →  2. {Screen}  →  3. {Screen}
 
 Screens
-| # | Screen (id) | For | What's on it | Requirements |
-| 1 | Class list (class-list) | Member | List of classes with free places, filter by club, "Book" | REQ-002, REQ-005 |
+| # | Screen (id) | For | What's on it (primary action) | States | Requirements |
+| 1 | Class list (class-list) | Member | Classes with free places; "Book class" | Empty, full class | REQ-002, REQ-005 |
 
 Assumptions (not in the register; marked on the wireframe)
 - {screen}: {element}, because {why the flow needs it}
@@ -35,7 +35,7 @@ Copy `wireframe-kit.html` unchanged and fill its three markers:
 - **sidebar:** `<aside class="sidebar">` with `<div class="sidebar-logo">{project}</div>`, one `<a class="nav-item" href="#{id}" data-go="{id}">{name}</a>` per main screen (not per state), and `<div class="sidebar-footer">Wireframe v{N} · {YYYY-MM-DD}</div>`.
 - **screens:** one `<section class="screen" id="{id}">` per row of the screen map, ids exactly as in the map, then the coverage screen.
 
-Inside screens use only the kit's classes: `page-header`, `card`, `grid`, `stat`, `label`, `table` inside `<div class="table-wrap">`, `btn`, `btn secondary`, `field`, `badge ok|warn|bad`, `notice`, `placeholder`. No other styles, colours, scripts, images or links to external files; the kit already works in light and dark themes and at phone width.
+Inside screens use only the kit's classes: `page-header`, `crumbs`, `card`, `grid`, `stat`, `label`, `table` inside `<div class="table-wrap">`, `actions`, `btn`, `btn primary`, `btn danger`, `field` (with `req-mark`, `help`, `invalid`, `error-text`), `badge ok|warn|bad`, `notice`, `state` with `state-label`, `empty`, `ph-line` (`short`, `mid`), `ph-img`, `placeholder`, `ux-note`. No other styles, colours, scripts, images or links to external files; the kit already works in light and dark themes and at phone width.
 
 - **Navigation:** every button, link or row that leads somewhere has `data-go="{target id}"` (on links also `href="#{target id}"`); nothing is a dead link. Forms don't submit anywhere: a submit button carries `data-go` to the next screen.
 - **Traceability:** after each element that serves a requirement, `<span class="req-tag">REQ-005</span>` (several IDs separated by `, `). The toolbar's "Show requirements" toggle reveals them.
@@ -57,7 +57,8 @@ HTML for `create_file` (`text/html`):
 <p><b>For:</b> {role} · <b>Reached from:</b> {screens} · <b>Leads to:</b> {screens}</p>
 <table border="1"><tr><td><b>Element</b></td><td><b>Behaviour</b></td><td><b>Requirements</b></td></tr>
 <tr><td>{element}</td><td>{what it shows or does}</td><td>{REQ IDs, or "assumption"}</td></tr></table>
-<p><b>States:</b> {empty, error, success, as shown}</p>
+<p><b>States:</b> {empty, error, not allowed, success, as shown}</p>
+<p><b>UX notes:</b> {the screen's ux-note texts}</p>
 <h2>Not shown as a screen</h2><ul><li>{REQ-ID}: {why}</li></ul>
 <h2>Assumptions to confirm with the client</h2><ul><li>{screen}: {assumption}</li></ul>
 <h2>Changes in this version</h2><ul><li>{screen}: {old} → {new} ({REQ-ID or feedback source})</li></ul>

@@ -6,10 +6,11 @@
 # Set about 10% above the sizes measured on 2026-10-26.
 static:
   description: 110          # in context in every chat, triggered or not
-  skill_md: 2500            # loaded when the skill runs
+  skill_md: 2800            # loaded when the skill runs; raised from 2500 (2026-10-28) for the low-fi and UX self-checks
   references:
-    references/prototype-format.md: 1200   # read once, at the first gate
-    references/wireframe-kit.html: 1850    # read once; includes dark theme and phone layout, only after the screen map is approved
+    references/prototype-format.md: 1400   # read once, at the first gate; raised from 1200 for states and UX notes
+    references/ux-rules.md: 900            # read once, at the first gate: basic UX rules for the map and the screens
+    references/wireframe-kit.html: 2500    # read once; low-fi greyscale kit with states, placeholders and UX notes (was 1850), dark theme and phone layout; only after the screen map is approved
 
 # Per case, mean per run with the plugin loaded (judge calls excluded).
 # Turns and cost: set about 20% above the means of the first 3-run suite.
