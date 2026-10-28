@@ -46,11 +46,11 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 
 1. **Find the workspace.** Search Drive for `discovery.yaml` (`title = 'discovery.yaml'`, `excludeContentSnippets: true`) and read it with `read_file_content`; it gives the ids of `transcripts`, `meeting_summaries`, `requirements_register`, `decision_log`, `raid_log`, `open_questions_log` and `context_canvas`. The reader may escape underscores as `\_`: remove the backslashes from ids. Several results: read each one's `project` line and ask which project, unless the BA named it. None, or no Drive tools: work on attached files and say at the gate that nothing can be saved yet.
 
-2. **Read the documents**, in parallel, with `get_values`: `Requirements!A:K`, `Updates!B:C`, `Decisions!A:H`, `Risks!A:G`, `Questions!A:I`, `Canvas!A1:C13`. Keep each row's number. A transcript is done when its file id appears in the `Updates` links. Attached exports instead: read each once.
+2. **Read the documents** with `get_values`, one call after another (Sheets rule under Rules): `Requirements!A:K`, `Updates!B:C`, `Decisions!A:H`, `Risks!A:G`, `Questions!A:I`, `Canvas!A1:C13`. Keep each row's number. A transcript is done when its file id appears in the `Updates` links. Attached exports instead: read each once.
 
-3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back, since Drive returns folder listings in pages) and take the ones not done, oldest first, at most 3 per run (later meetings can change what earlier ones said). None: say the documents are up to date and stop.
+3. **Pick the transcripts.** If the BA attached or named one, use it. Otherwise list `transcripts` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back, since Drive returns folder listings in pages) and take the oldest one not done: one meeting per run, so the review stays small enough to read properly. Process several together (at most 3, oldest first) only when the BA names them. If more are waiting, say how many at the gate. None: say the documents are up to date and stop.
 
-4. **Read each transcript once**, oldest first, with `read_file_content`. If it returns nothing, try `get_file_metadata` with `snippetVerbosity: MAX_ALLOWED` and use its `contentSnippet`. Still nothing and the file was created in the last few minutes: Drive is still processing it, so tell the BA to ask again in a minute, and stop. Then read `meeting_summaries` with `read_file_content`; if it links a summary for this transcript, read that summary once. Use it only to cross-check decisions, actions and open questions; the transcript is the source.
+4. **Read the transcript once** (each of them, oldest first, if the BA named several) with `read_file_content`. If it returns nothing, try `get_file_metadata` with `snippetVerbosity: MAX_ALLOWED` and use its `contentSnippet`. Still nothing and the file was created in the last few minutes: Drive is still processing it, so tell the BA to ask again in a minute, and stop. Then read `meeting_summaries` with `read_file_content`; if it links a summary for this transcript, read that summary once. Use it only to cross-check decisions, actions and open questions; the transcript is the source.
 
 5. **Find the changes.** Read `references/docs-format.md` once, now. Then compare what was said with the documents:
    - **Requirements.** *New:* a need the client states that no requirement covers; the same meaning in other words is not new. *Changed:* the client restates a requirement's own content differently. A rule that adds to a requirement without contradicting it is a new requirement, so the existing one can still be confirmed. *Confirmed:* explicit agreement ("yes, that's right", "agreed", "that stays as it is"); "sounds good, let's see" is not. *Rejected:* explicitly dropped. *Conflict:* incompatible wishes the meeting doesn't settle, or a statement against a `Confirmed` requirement; flag both, never pick a side. A conflict the client settles is cleared.
@@ -60,7 +60,13 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
    - **Canvas:** new facts about the problem, goals, metrics, users, scope, stakeholders, systems, constraints, assumptions or risks. When the meeting settles something a canvas entry calls open, disputed or unknown, propose replacing that phrase, shown as old → new; everything else is added after the existing text.
    - Every item carries the speaker and the timestamp (or a short quote). Write in the documents' language; if they are empty, in the transcript's.
 
-6. **Show the proposed changes and ask (gate).** Show in the chat, grouped by document, each item with its quote and timestamp, and the totals. Name any document that couldn't be read. Ask: "Shall I apply these changes? You can also tell me which documents or items to skip." Stop and wait. Apply corrections and ask again.
+6. **Show the proposed changes and ask (gate).** Show in the chat, grouped by document, each item with its quote and timestamp, and the totals. Name any document that couldn't be read. End with one line per document and its count, so the BA can approve document by document:
+
+   ```
+   Requirements: 3 new, 1 changed, 2 confirmed · Decisions: 2 · Risks: 1 · Open questions: 2 answered, 1 new · Canvas: 2 sections
+   ```
+
+   Ask: "Which shall I apply: all, or name the documents (for example 'requirements and decisions')? You can also skip single items." Stop and wait. Apply corrections and ask again.
 
 7. **Apply, after a clear yes**, only the approved items:
    - Requirements: `append_values` old versions to `History!A1` first; then re-read `Requirements!A:A`, check each REQ ID is still on the row you noted (use the new row if it moved), and `update_values` the changed rows; `append_values` new rows.
@@ -68,7 +74,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
    - Canvas: `update_values` each changed cell, columns B and C: the old text with approved replacements applied, a line break, and the new text.
    - Finally `append_values` one row per transcript to `Updates!A1`.
 
-   Independent writes can run in parallel. If a call fails, retry it once; if it fails again, stop and report what was applied and what wasn't.
+   Write one document at a time, in the order above, one Sheets call at a time. If a non-quota call fails, retry it once; if it fails again, stop and report what was applied and what wasn't. On `Quota exceeded`, follow the Sheets rule.
 
 8. **Verify and report.** Read back the changed ranges. Report the counts per document, anything not applied, and the next step: "Open P1 questions and conflicts are the agenda for the next session. When there is enough context, ask me for a prototype."
 
@@ -78,6 +84,8 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 - Approval is a clear yes, for everything or for named documents or items. A correction is not approval: apply it and ask again.
 
 ## Rules, and why they matter
+
+- **Google Sheets calls one at a time.** Google limits each user to about 60 Sheets reads and 60 writes a minute, and calls sent together hit it. Never run two Sheets calls in parallel (Drive and Docs calls may run in parallel); write each tab in as few calls as possible. On `Quota exceeded`, don't retry, since you can't wait: report what is saved and ask the BA to type "continue" in a minute, then resume from the first unsaved part.
 
 - **Never invent.** Every item comes from words in the transcript, with speaker and timestamp. A requirement, decision or risk nobody said is scope, commitment or worry nobody agreed to.
 - **Never lose what's there.** Changed requirements keep their old version in History; canvas text is added to, and replaced only where the meeting settled it and the BA approved the old → new; superseded decisions stay with their status. The BA must be able to show how the picture evolved.
@@ -97,6 +105,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `get_file_meta
 | Vague agreement ("sounds good, let's see") | Not a confirmation or a decision |
 | Rows moved since they were read | Uses the row numbers from a fresh read |
 | A write fails twice | Stops; reports what was applied and what wasn't |
+| `Quota exceeded` from Google Sheets | As in the Sheets rule: reports what is saved, asks the BA to type "continue", resumes |
 
 ## Quality criteria
 
