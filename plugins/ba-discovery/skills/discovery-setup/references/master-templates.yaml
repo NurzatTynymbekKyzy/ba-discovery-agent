@@ -1,0 +1,22 @@
+# Master copies of the templates on Google Drive, one per `template` in structure.yaml.
+# discovery-setup copies these files with Drive `copy_file`; it does not rebuild them.
+# Folder: https://drive.google.com/drive/folders/17TIi-_IsvPkB5ExgoqcozxZPttGgNOIE
+# (shared as "Anyone with the link: Viewer", so every BA can copy them).
+# When a file in templates-source/ changes, update its master file and run
+# tools/templates/build_templates.py; see docs/CHANGE-A-TEMPLATE.md.
+version: 1
+masters:
+  readme:                 1ASVRkA2JkkyJF_uiGh9lXcr3roJE8J_-zVRZKT31qMI
+  discovery-plan:         1htDACF3eFiZo4WfgGlQFhVqmEi9WyEpmUtm89n9lRfE
+  communication-plan:     1IJxtTmlI9ss9bF8FEGzpudywsgkJYrb64xpHrX9daKI
+  access-checklist:       1Vhz0ShdAjBbvj1T-Gpibv9rG0gf7BtXwvsTd2r4UHXQ
+  raid-log:               18-9luOH6YlEf_A8faywoVpO0Aa6dfvZRTwzkyWekn28
+  decision-log:           1U6rPWO6mUe8lO-YIC0GCefXDfZQTcXWUWBX1XMLq9pY
+  meeting-summaries:      1rc5k5H0ExtuJcGbHCSzt4P_ELnmoAc20LRVoQE3cQV4
+  stakeholder-matrix:     1Rfge5ZVLh-7oCQE7by62D7u0W8yleZ8lg6NY5mBjzrc
+  project-context-canvas: 167Wlfbm4DFol7gx_L9TqMPFkCBvVhpMYN1Dc_2cFt0o
+  as-is-context:          1yxveAx7yCLAzwd4l8v9EZe7cAYwOLXztpx76XENBeOE
+  glossary:               1t5J8UPskIVAS-ShCKwjxKXPoJiZ1hSyVteWzfzPm3FM
+  requirements-register:  10SCYZPXfoulXl02XST8uynzCBe93NHLAQi3AbvxgeRE
+  open-questions-log:     1mmUlJa-Tb3Y7SRAhqCo24HTv51DQD3cRgAZ8Eox1XsI
+  constraints:            1dUT8JIBP7FMuD6_qWlLiWkQhNiB3oTQv8goqZP51T80

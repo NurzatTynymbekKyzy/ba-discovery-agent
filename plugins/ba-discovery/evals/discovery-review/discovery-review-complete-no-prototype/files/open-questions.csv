@@ -1,5 +1,0 @@
-Q ID,Question,Topic,Ask whom,Raised on,Priority,Status,Answer,Source
-Q-001,Do trainers need to mark attendance in the app?,P3 Functional,Ana Ruiz,2026-09-30,P1,Answered,No: attendance stays at the desk,Kickoff
-Q-002,Which clubs are in the pilot?,P1 Goals & scope,Sara Lind,2026-09-28,P1,Answered,Riverside and City Centre,Scope session
-Q-003,Is there a limit on bookings per member per week?,P3 Functional,Tom Reyes,2026-10-06,P2,Closed,No limit for the pilot,Scope session
-Q-004,Should reminders go by SMS or push?,P4 Non-functional,Sara Lind,2026-10-06,P3,Open,,Scope session

@@ -10,7 +10,8 @@ static:
   references:               # every file the skill can read during a run
     references/structure.yaml: 900
     references/discovery-record.md: 550
-    references/templates.json: 10400   # read once, after approval; most of it is copied into tool calls.
+    references/master-templates.yaml: 460   # read once, after approval: ids of the master files to copy
+    references/templates.json: 10400   # fallback only: read when a master file can't be copied
                                        # Raised from 9200 (2026-10-26): the Requirements Register gained History
                                        # and Updates tabs, which discovery-docs-update needs for traceability.
 

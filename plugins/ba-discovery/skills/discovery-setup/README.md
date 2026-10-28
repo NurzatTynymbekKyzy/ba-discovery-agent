@@ -5,7 +5,7 @@
 
 ## What it does for you
 
-Creates the standard workspace for a new Discovery on your Google Drive in one step: numbered folders and Google Docs and Sheets for the plan, RAID log, decisions, stakeholders, context and requirements, each built from a shared template: column headers, dropdowns and frozen headers in Sheets, headings and guidance in Docs. Every Discovery gets the same layout, so you, the client team and the other skills always know where things live.
+Creates the standard workspace for a new Discovery on your Google Drive in one step: numbered folders and Google Docs and Sheets for the plan, RAID log, decisions, stakeholders, context and requirements, each a copy of a shared master template on Drive: column headers, dropdowns and frozen headers in Sheets, headings and guidance in Docs. Every Discovery gets the same layout, so you, the client team and the other skills always know where things live.
 
 ## How to use it
 
@@ -69,6 +69,7 @@ The Google Drive connector enabled in Claude. Google Sheets as well, for dropdow
 
 | Date | Version | Who | Result | Notes |
 |---|---|---|---|---|
+| 2026-10-28 | 0.9.0 | @NurzatTynymbekKyzy | Pass | "Test Project 5" by copying the master templates: 24 items + `discovery.yaml` in about 70 seconds; 26 Drive calls (was 37), no Google Sheets writes (was 10), no quota errors (was 1). Register copy checked: Requirements, History and Updates tabs, empty. |
 | 2026-10-24 | 0.2.0 | @NurzatTynymbekKyzy | Pass | "Test Project" in the root of My Drive: plan shown, created after "да", 22 items + `discovery.yaml`, verified on Drive with no missing, extra or duplicate items. Re-run found the existing workspace and created nothing. |
 | 2026-10-24 | 0.2.0 | @NurzatTynymbekKyzy | Pass after fix | Named location "Clients" did not exist: the check ran only after approval, so lookups moved before the gate. BA answered "нет": nothing created, confirmed on Drive. Not yet tried by hand: several folders with the same name, a failing create call. |
 

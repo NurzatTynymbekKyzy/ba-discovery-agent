@@ -53,6 +53,8 @@ On the pull request, open **Checks → Templates**. The summary shows each templ
 
 A maintainer reviews the change and merges it. GitHub then regenerates the files the skill reads, and every BA gets the new template with the next plugin update.
 
+**Maintainer step:** `discovery-setup` copies the master files in the shared [Master Templates folder](https://drive.google.com/drive/folders/17TIi-_IsvPkB5ExgoqcozxZPttGgNOIE), so after merging, update the matching master file on Drive the same way (or replace it and put the new file id in `plugins/ba-discovery/skills/discovery-setup/references/master-templates.yaml`). The folder must stay shared as "Anyone with the link: Viewer". `templates.json` is regenerated as before and is the fallback when a master can't be copied.
+
 ## Want a new file in the Discovery folder?
 
 That's a change to the folder structure, not only a template. Open an issue describing the file, which folder it belongs in, and why every Discovery needs it. If it's agreed, the maintainer adds it to the structure and you can upload its template the same way.

@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: discovery-review-should-not-trigger
-expected_outcome: |
-  Summarizing a meeting belongs to workshop-summary; discovery-review must not fire.
-context:
-  scaffold_script: place-files.sh

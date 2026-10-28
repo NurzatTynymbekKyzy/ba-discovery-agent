@@ -1,7 +1,0 @@
-schema_version: "1.1"
-name: discovery-review-complete-no-prototype
-expected_outcome: |
-  Checks 1, 2 and 5 OK; check 3 Gap (no screen spec), check 4 not checked. Fix first:
-  build the prototype with the prototype skill. Nothing is written.
-context:
-  scaffold_script: place-files.sh
