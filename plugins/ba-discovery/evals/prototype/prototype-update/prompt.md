@@ -1,7 +1,7 @@
 ---
 description: Update mode; register changed since the spec (1-hour window, new waitlist offer rule, rejected app requirement) plus UI feedback; propose per-screen changes only
 tags: [prototype, edge]
-max_turns: 12
+max_turns: 14
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---

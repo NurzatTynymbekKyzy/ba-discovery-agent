@@ -18,7 +18,7 @@ Apply these to the screen map and to every screen. They decide layout, flow and 
 
 ## States: show the ones the requirements imply
 
-9. For every list and every form, decide which states matter and show them on the same screen as `state` blocks with a `state-label`: **Empty** (no items yet, with the action that fills it), **Error** (what went wrong and how to fix it), **Not allowed** (a rule in the requirements blocks the action, for example a deadline passed), **Success**. Show only states that a requirement or a flow makes possible.
+9. For every list and every form, decide which states matter and show them on the same screen as `state` blocks with a `state-label`: **Empty** (no items yet, with the action that fills it), **Error** (what went wrong and how to fix it), **Not allowed** (a rule in the requirements blocks the action, for example a deadline passed), **Success**. Every list shows its **Empty** state; otherwise show only states that a requirement or a flow makes possible.
 
 ## Forms
 
