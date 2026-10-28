@@ -2,6 +2,10 @@
 
 All notable changes to the `ba-discovery` plugin. Versions follow `version` in `plugins/ba-discovery/.claude-plugin/plugin.json`.
 
+## Unreleased (0.10.0)
+
+- `prototype` builds a low-fi wireframe: greyscale outlines, placeholder lines and images, states (empty, error, not allowed, success) and UX notes behind a "Show UX notes" toggle. New `references/ux-rules.md` (one primary action per screen, title and way back, states the requirements imply, labelled forms, confirmation before destructive actions). Before showing the wireframe the skill checks that every non-rejected Functional and User requirement is on a screen or listed with a reason, and that each screen passes the UX checks
+
 ## Unreleased (0.9.0)
 
 - `discovery-setup` copies master template files from a shared Drive folder (`references/master-templates.yaml`) instead of reading `templates.json` and rebuilding every Doc and Sheet; `templates.json` is now only the fallback. Live run: 26 Drive calls instead of 37, no Google Sheets writes (was 10), no template text through the model (was about 9.5k tokens read and re-written)

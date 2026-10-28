@@ -1,13 +1,13 @@
 ---
 name: prototype
-description: Builds a clickable wireframe prototype of the product from the Discovery's Requirements Register, with every screen element traced to its requirement, plus a screen spec Doc for designers; updates both after client feedback. Use when a BA asks for a prototype, mockup, wireframe or clickable screens, or to update the prototype after feedback.
+description: Builds a clickable low-fi wireframe prototype of the product from the Discovery's Requirements Register, with every screen element traced to its requirement, plus a screen spec Doc for designers; updates both after client feedback. Use when a BA asks for a prototype, mockup, wireframe or clickable screens, or to update the prototype after feedback.
 ---
 
 # Prototype
 
 ## Purpose
 
-A client who clicks through a few screens finds missing or wrong requirements faster than one reading a register. This skill turns the Requirements Register into a clickable wireframe to validate the flow with the client, and a screen spec for the designers who will build the real design in Figma. It is deliberately a wireframe: neutral and quick to change, so the conversation stays on flows and content, not on colours.
+A client who clicks through a few screens finds missing or wrong requirements faster than one reading a register. This skill turns the Requirements Register into a clickable wireframe to validate the flow with the client, and a screen spec for the designers who will build the real design in Figma. It is deliberately low-fi: greyscale boxes and placeholders, quick to change, so the conversation stays on flows and content, not on colours. It still follows basic UX rules (one primary action per screen, clear titles and way back, the states the requirements imply, labelled forms), so the client judges a sensible flow.
 
 ## When to use
 
@@ -47,12 +47,15 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `create_file`;
 
 2. **Read the register and decide the mode.** `get_values` on `Requirements!A:K`; drop `Rejected` rows. List `07 Prototype` (`parentId = '<id>'`, `excludeContentSnippets: true`, `pageSize: 100`; repeat with `pageToken` while a `nextPageToken` comes back, since Drive returns folder listings in pages). No `Screen spec` Doc: **new** (v1). Otherwise **update**: read the newest spec with `read_file_content`.
 
-3. **Propose (first gate).** Read `references/prototype-format.md` once, now.
-   - **New:** group the requirements into user flows and screens and show the screen map. Every screen lists its REQ IDs; elements no requirement asks for are listed as assumptions; business and non-functional requirements without a screen are listed as such.
+3. **Propose (first gate).** Read `references/prototype-format.md` and `references/ux-rules.md` once each, now.
+   - **New:** group the requirements into user flows and screens and show the screen map. Every screen lists its REQ IDs and the states it shows (empty, error, not allowed, success) as the UX rules require; elements no requirement asks for are listed as assumptions; business and non-functional requirements without a screen are listed as such.
    - **Update:** compare the register with the spec: new requirements, requirements whose `Last changed` is after the spec's "Register read on" date, and requirements in the spec that are now `Rejected`. If the BA named a feedback transcript, read it once and take only comments about the screens (layout, wording, missing field, wrong step); requirement changes come from the register. Show the changes per screen as old → new, each with its reason.
    - Ask: "Shall I build the wireframe from this?" Stop and wait. Apply corrections and show the map again.
 
-4. **Build.** Read `references/wireframe-kit.html` once, now, not earlier. Build the whole wireframe following the format: the kit copied unchanged, the sidebar, one section per screen in the approved map, the coverage screen. In update mode build the full file again from the updated map, keeping unchanged screens as they were described in the spec. Show it in the chat as an HTML page the BA can open full screen.
+4. **Build.** Read `references/wireframe-kit.html` once, now, not earlier. Build the whole wireframe following the format and the UX rules: the kit copied unchanged, the sidebar, one section per screen in the approved map with its states and UX notes, the coverage screen. Before showing it, check two things and fix what fails:
+   - **Requirements match:** every non-rejected Functional and User requirement has a `req-tag` on at least one screen or is listed under "Not shown as a screen" with a reason; no element without a tag except marked assumptions; no Rejected requirement anywhere.
+   - **UX:** every screen has an `h1`, exactly one `btn primary`, a way back (except the first screen), and the states from the approved map.
+   Show one line with the result, for example "Checks: 9 of 9 requirements on screens, 3 not shown with a reason; UX checks passed on 6 screens." In update mode build the full file again from the updated map, keeping unchanged screens as they were described in the spec. Show it in the chat as an HTML page the BA can open full screen.
 
 5. **Ask to save (second gate).** "Here is Wireframe v{N}. Shall I save it and the screen spec to 07 Prototype?" Stop and wait. Corrections: change, show again, ask again.
 
@@ -92,6 +95,7 @@ Tools this skill uses: Drive `search_files`, `read_file_content`, `create_file`;
 ## Quality criteria
 
 - Every screen element that serves a requirement shows its REQ ID; the coverage screen lists every non-rejected requirement.
+- Low-fi: greyscale kit classes and placeholders only; each screen has one primary action, a title, a way back and the states the requirements imply; forms have labels and one error example.
 - No rejected requirement appears; nothing appears that the register doesn't contain, except marked assumptions.
 - Every navigation element leads to an existing screen.
 - Only the kit's styles are used.

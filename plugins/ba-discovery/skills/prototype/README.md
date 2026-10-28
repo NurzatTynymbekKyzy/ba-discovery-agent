@@ -7,7 +7,7 @@
 
 Turns your Requirements Register into:
 
-- a **clickable wireframe** to walk the client through the product: screens, flows and realistic sample data, neutral on purpose so the client talks about flows and content, not colours. A "Show requirements" toggle puts the REQ ID next to every element, and a coverage screen shows which requirement is on which screen, which have no screen, and which elements are assumptions;
+- a **clickable low-fi wireframe** to walk the client through the product: greyscale screens, flows, placeholders and realistic sample data, so the client talks about flows and content, not colours. It follows basic UX rules: one primary action per screen, a title and a way back, the states the requirements imply (empty, error, not allowed, success), labelled forms, and "Show UX notes" for what designers must decide. A "Show requirements" toggle puts the REQ ID next to every element, and a coverage screen shows which requirement is on which screen, which have no screen, and which elements are assumptions;
 - a **screen spec** Google Doc for the designers: flows, screens, elements and their behaviour, states, REQ IDs, assumptions, and what changed since the last version.
 
 After the client's feedback it updates both and saves a new version; earlier versions stay.
